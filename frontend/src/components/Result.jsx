@@ -79,6 +79,25 @@ const Result = () => {
 
                 <div className="result-content">
 
+                    {showAnswers && (
+                        <div className="answer-summary">
+                            <div className="summary-card correct">
+                                <div className="summary-icon">✅</div>
+                                <div className="summary-content">
+                                    <div className="summary-label">Correct Answers</div>
+                                    <div className="summary-value">{correctCount}</div>
+                                </div>
+                            </div>
+                            <div className="summary-card info">
+                                <div className="summary-icon">📝</div>
+                                <div className="summary-content">
+                                    <div className="summary-label">Questions Attempted</div>
+                                    <div className="summary-value">{answerDetails ? (answerDetails.length - unansweredCount) : 0} / {answerDetails ? answerDetails.length : 0}</div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     <div className="time-taken">
                         <span className="time-icon">⏱️</span>
                         <span className="time-label">Time Taken:</span>
@@ -116,10 +135,10 @@ const Result = () => {
                                                     <span className="option-label">{String.fromCharCode(65 + optIndex)}.</span>
                                                     <span className="option-text">{option}</span>
                                                     {optIndex === answer.correctAnswer && (
-                                                        <span className="correct-badge">✓ Correct Answer</span>
+                                                        <div className="correct-badge">Correct Answer</div>
                                                     )}
                                                     {optIndex === answer.userAnswer && !answer.isCorrect && (
-                                                        <span className="wrong-badge">✗ Your Answer</span>
+                                                        <div className="wrong-badge">Your Answer</div>
                                                     )}
                                                 </div>
                                             ))}
