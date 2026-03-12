@@ -111,13 +111,19 @@ const Result = () => {
                                 <h2>Detailed Answer Analysis</h2>
                             </div>
                             <div className="answer-list">
-                                {answerDetails.map((answer, idx) => (
+                                {answerDetails
+                                    .map((a, i) => ({ ...a, originalIndex: i + 1 }))
+                                    .sort((a, b) => {
+                                        if (a.isCorrect === b.isCorrect) return a.originalIndex - b.originalIndex;
+                                        return a.isCorrect ? 1 : -1;
+                                    })
+                                    .map((answer) => (
                                     <div
                                         key={answer.questionId}
                                         className={`answer-item ${answer.isCorrect ? 'correct' : answer.isAnswered ? 'wrong' : 'unanswered'}`}
                                     >
                                         <div className="answer-item-header">
-                                            <span className="question-number">Q{idx + 1}</span>
+                                            <span className="question-number">Q{answer.originalIndex}</span>
                                             <span className={`answer-status ${answer.isCorrect ? 'correct' : answer.isAnswered ? 'wrong' : 'unanswered'}`}>
                                                 {answer.isCorrect ? '✅ Correct' : answer.isAnswered ? '❌ Wrong' : '⚠️ Unanswered'}
                                             </span>
