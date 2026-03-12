@@ -55,17 +55,18 @@ router.get('/dashboard-data', verifyToken, isAdmin, async (req, res) => {
     }
 });
 
-// Toggle Exam Access & Show Answers
+// Toggle Exam Access & Show Answers & Leaderboard
 router.post('/toggle-exam', verifyToken, isAdmin, async (req, res) => {
     try {
-        const { allowExam, showAnswers } = req.body;
+        const { allowExam, showAnswers, showLeaderboard } = req.body;
         // Fetch current settings first
         const current = await query("SELECT value FROM settings WHERE key = 'general'");
-        const existing = current.rows[0]?.value || { allowExam: false, showAnswers: false };
+        const existing = current.rows[0]?.value || { allowExam: false, showAnswers: false, showLeaderboard: false };
         const merged = {
             ...existing,
             ...(allowExam !== undefined ? { allowExam } : {}),
             ...(showAnswers !== undefined ? { showAnswers } : {}),
+            ...(showLeaderboard !== undefined ? { showLeaderboard } : {}),
         };
         await query(
             "INSERT INTO settings (key, value) VALUES ('general', $1::jsonb) ON CONFLICT (key) DO UPDATE SET value = $1::jsonb",
