@@ -412,6 +412,7 @@
     gap: 10px;
     border: 2px solid transparent;
     transition: all 0.2s;
+    flex-wrap: wrap;
 }
 
 .option-label {

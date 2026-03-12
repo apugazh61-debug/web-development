@@ -3,8 +3,6 @@ import './QuestionCard.css';
 const QuestionCard = ({ question, selectedAnswer, onAnswerSelect }) => {
     return (
         <div className="question-card">
-            <div className="section-badge">{question.section}</div>
-
             <div className="question-text">
                 <span className="question-content">{question.question}</span>
             </div>

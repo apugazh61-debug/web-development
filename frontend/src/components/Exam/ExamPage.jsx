@@ -49,7 +49,25 @@ const ExamPage = () => {
 
                 const data = await response.json();
                 const fetchedQuestions = data.questions || [];
-                const shuffled = shuffleArray(fetchedQuestions); // Randomize order per participant
+                
+                // Shuffle options for each question separately
+                const randomizedQuestions = fetchedQuestions.map(q => {
+                    // Keep track of the original correct answer by value before shuffling
+                    const optionsWithFlag = q.options.map((opt, idx) => ({ 
+                        text: opt, 
+                        isCorrect: idx === q.correctAnswer 
+                    }));
+                    
+                    const shuffledOptions = shuffleArray(optionsWithFlag);
+                    
+                    return {
+                        ...q,
+                        options: shuffledOptions.map(o => o.text),
+                        correctAnswer: shuffledOptions.findIndex(o => o.isCorrect)
+                    };
+                });
+
+                const shuffled = shuffleArray(randomizedQuestions); // Randomize request order per participant
                 setQuestions(shuffled);
                 setAnswers(new Array(shuffled.length).fill(null));
                 setLoading(false);
