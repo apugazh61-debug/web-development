@@ -35,6 +35,15 @@ body {
   cursor: default !important;
 }
 
+/* Allow text indicator (cursor and selection) ONLY in inputs */
+input, textarea {
+  user-select: auto !important;
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  cursor: text !important;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

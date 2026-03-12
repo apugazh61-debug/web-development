@@ -127,7 +127,7 @@ const ExamPage = () => {
 
         const handleFocus = () => {
             if (cheatStrikesRef.current < 3) {
-                setIsWindowBlurred(false);
+                // Let the 3-second timeout clear the blur, so the warning is always shown for at least 3 seconds.
             }
         };
 
@@ -135,7 +135,9 @@ const ExamPage = () => {
             if (document.hidden && !hasSubmittedRef.current) {
                 triggerStrike();
             } else if (!document.hidden && cheatStrikesRef.current < 3) {
-                setIsWindowBlurred(false);
+                // We'll let the auto-resume timeout handle clearing the blur, 
+                // but if they return AFTER 3 seconds, it should be cleared.
+                // We shouldn't clear it immediately on return if we promised a 3 second warning.
             }
         };
 
@@ -154,6 +156,17 @@ const ExamPage = () => {
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    // Auto-resume warning after 3 seconds
+    useEffect(() => {
+        let timeout;
+        if (isWindowBlurred && cheatStrikes > 0 && cheatStrikes < 3) {
+            timeout = setTimeout(() => {
+                setIsWindowBlurred(false);
+            }, 3000); // 3 seconds warning indicator
+        }
+        return () => clearTimeout(timeout);
+    }, [isWindowBlurred, cheatStrikes]);
 
     // Disable browser back button
     useEffect(() => {
