@@ -1,0 +1,453 @@
+.admin-dashboard-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: url('../../assets/aven.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.admin-dashboard-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.85);
+    /* Dark overlay */
+    z-index: 1;
+}
+
+.admin-dashboard-container>* {
+    position: relative;
+    z-index: 2;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.admin-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, #fff 0%, #ffeb3b 50%, #ff9800 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 152, 0, 0.4));
+    letter-spacing: -1px;
+}
+
+.admin-card {
+    background: rgba(20, 20, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.admin-card h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-left: 4px solid #ff9800;
+    padding-left: 15px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header h2 {
+    margin-bottom: 0;
+}
+
+/* Toggle Switch Styles */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.status-text {
+    font-weight: bold;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.status-text.allow {
+    background: rgba(0, 242, 254, 0.2);
+    color: #00f2fe;
+    border: 1px solid rgba(0, 242, 254, 0.5);
+}
+
+.status-text.block {
+    background: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+    border: 1px solid rgba(255, 59, 48, 0.5);
+}
+
+/* Switch UI */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #00f2fe;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #00f2fe;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-table th {
+    color: #a0aec0;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Leaderboard Specific */
+.rank-badge {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+
+.top-rank .rank-badge {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #000;
+    box-shadow: 0 0 15px rgba(246, 211, 101, 0.4);
+}
+
+.top-rank td {
+    background: rgba(246, 211, 101, 0.05);
+}
+
+.participant-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.participant-email {
+    font-size: 0.85rem;
+    color: #a0aec0;
+}
+
+.score-text {
+    font-size: 1.2rem;
+    color: #00f2fe;
+}
+
+.attend-badge {
+    font-weight: 600;
+    color: #a0aec0;
+    font-size: 0.95rem;
+}
+
+.correct-badge {
+    font-weight: 700;
+    color: #4caf50;
+    font-size: 1rem;
+}
+
+/* Badges & Buttons */
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.badge.success {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.badge.pending {
+    background: rgba(255, 152, 0, 0.2);
+    color: #ff9800;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.panel-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    background: rgba(0, 242, 254, 0.1);
+    color: #00f2fe;
+    border: 1px solid rgba(0, 242, 254, 0.5);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #00f2fe;
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+.btn-danger {
+    background: rgba(255, 59, 48, 0.1);
+    color: #ff3b30;
+    border: 1px solid rgba(255, 59, 48, 0.5);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: #ff3b30;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 59, 48, 0.4);
+}
+
+.btn-logout {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.admin-loading {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('../../assets/aven.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+}
+
+.admin-loading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 5, 10, 0.88);
+}
+
+.admin-loading > * {
+    position: relative;
+    z-index: 1;
+}
+
+.admin-loader {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: #ff9800;
+    border-right-color: #ff5722;
+    animation: adminSpin 0.9s linear infinite;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.4);
+}
+
+@keyframes adminSpin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.admin-loading span {
+    background: linear-gradient(135deg, #fff 0%, #ffeb3b 50%, #ff9800 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        padding: 1rem;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .admin-title {
+        font-size: 2rem;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .panel-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .panel-actions button {
+        width: 100%;
+    }
+
+    .toggle-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .admin-card {
+        padding: 1rem;
+    }
+
+    .admin-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .admin-table th, .admin-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .score-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-title {
+        font-size: 1.6rem;
+    }
+
+    .btn-logout {
+        width: 100%;
+        text-align: center;
+    }
+}

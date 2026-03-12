@@ -1,0 +1,185 @@
+.instructions-container {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/aven.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructions-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.instructions-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.instructions-header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #ffeb3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid #00f2fe;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.instructions-content {
+    padding: 30px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.instruction-section {
+    margin-bottom: 25px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border-left: 4px solid #ff9800;
+    transition: transform 0.3s;
+}
+
+.instruction-section:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.instruction-section.warning {
+    background: rgba(255, 65, 54, 0.1);
+    border-left-color: #ff4136;
+}
+
+.instruction-section h2 {
+    margin: 0 0 15px 0;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.instruction-section h3 {
+    margin: 0 0 12px 0;
+    color: #e0e0e0;
+    font-size: 18px;
+}
+
+.instruction-section p {
+    margin: 0 0 10px 0;
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.instruction-section ul {
+    margin: 0;
+    padding-left: 25px;
+    color: #cccccc;
+}
+
+.instruction-section li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.subsection {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.agreement-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 242, 254, 0.05);
+    border-radius: 8px;
+    border: 2px solid #00f2fe;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.agreement-text {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.start-exam-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-exam-btn:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.start-exam-btn.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .instructions-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .instructions-header h1 {
+        font-size: 24px;
+    }
+
+    .instructions-content {
+        padding: 20px;
+    }
+}

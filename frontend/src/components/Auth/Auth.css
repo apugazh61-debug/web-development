@@ -1,0 +1,292 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/aven.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 20px;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 100%;
+  color: white;
+}
+
+.college-logo {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.master-logo-text {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 56px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  background: linear-gradient(135deg, #fff 0%, #ffeb3b 30%, #ff9800 60%, #f44336 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(244, 67, 54, 0.4));
+  display: block;
+  animation: fireFlicker 2s ease-in-out infinite alternate;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes fireFlicker {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.8)) blur(0.5px);
+    transform: scale(1) skewX(0deg);
+  }
+
+  25% {
+    filter: drop-shadow(0 -5px 15px rgba(244, 67, 54, 0.9)) blur(1px);
+    transform: scale(1.02) skewX(1deg);
+  }
+
+  50% {
+    filter: drop-shadow(0 -10px 20px rgba(255, 193, 7, 0.7)) blur(0.8px);
+    transform: scale(1.01) skewX(-1deg);
+  }
+
+  75% {
+    filter: drop-shadow(0 -5px 25px rgba(244, 67, 54, 0.8)) blur(1.2px);
+    transform: scale(1.03) skewX(0.5deg);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 15px rgba(255, 152, 0, 0.9)) blur(0.6px);
+    transform: scale(1) skewX(0deg);
+  }
+}
+
+.auth-card h1 {
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-size: 28px;
+  text-align: center;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: text !important;
+  user-select: text !important;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4facfe;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(79, 172, 254, 0.2);
+  cursor: text !important;
+}
+
+.error-text {
+  display: block;
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Password Toggle Styles */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  user-select: none;
+}
+
+.password-toggle:hover {
+  opacity: 0.7;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
+.password-hint {
+  display: block;
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: #00f2fe;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Creator Credit - Inside Card */
+.creator-credit-card {
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+.credit-separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d0d0d0, transparent);
+  margin-bottom: 12px;
+}
+
+.credit-text-card {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  opacity: 1;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .credit-text-card {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 25px 15px;
+  }
+
+  .college-logo img {
+    max-height: 120px;
+  }
+
+  .auth-card h1 {
+    font-size: 24px;
+  }
+
+  .credit-text-card {
+    font-size: 11px;
+  }
+}

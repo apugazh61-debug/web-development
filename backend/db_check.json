@@ -1,0 +1,65 @@
+{
+  "count": "30",
+  "samples": [
+    {
+      "id": 91,
+      "section": "Aptitude",
+      "question_text": "Which HTTP status code indicates that the request has succeeded but the server is not returning any content?",
+      "options": [
+        "200",
+        "201",
+        "204",
+        "304"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 92,
+      "section": "Aptitude",
+      "question_text": "Which CSS property is used to control the stacking order of positioned elements?",
+      "options": [
+        "order",
+        "z-index",
+        "stack",
+        "layer"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 93,
+      "section": "Aptitude",
+      "question_text": "What will typeof NaN return in JavaScript?",
+      "options": [
+        "number",
+        "NaN",
+        "undefined",
+        "object"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 94,
+      "section": "Aptitude",
+      "question_text": "Which HTML element is used to define client-side JavaScript?",
+      "options": [
+        "<script>",
+        "<js>",
+        "<javascript>",
+        "<code>"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 95,
+      "section": "Aptitude",
+      "question_text": "Which HTTP method is idempotent?",
+      "options": [
+        "POST",
+        "PATCH",
+        "PUT",
+        "CONNECT"
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

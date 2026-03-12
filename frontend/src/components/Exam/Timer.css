@@ -1,0 +1,39 @@
+.timer {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    transition: all 0.3s;
+}
+
+.timer.warning {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    animation: pulse 1s infinite;
+}
+
+.timer-icon {
+    font-size: 22px;
+}
+
+.timer-text {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
