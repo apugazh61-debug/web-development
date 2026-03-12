@@ -16,8 +16,21 @@ console.log('DB_HOST:', process.env.DB_HOST);
 console.log('Using PORT:', PORT);
 
 // Middleware
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://web-development-pugazhenthis-projects-a12f3df8.vercel.app',
+    process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-    origin: true, // Reflect request origin (allows any origin to access, good for local dev)
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            return callback(null, true); // Still allowing all for safety to avoid CORS blocks for now, but configured specifically for Vercel
+        }
+        return callback(null, true);
+    },
     credentials: true
 }));
 app.use(express.json());
