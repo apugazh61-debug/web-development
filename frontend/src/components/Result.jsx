@@ -124,9 +124,9 @@ const Result = () => {
                                     >
                                         <div className="answer-item-header">
                                             <span className="question-number">Q{answer.originalIndex}</span>
-                                            <span className={`answer-status ${answer.isCorrect ? 'correct' : answer.isAnswered ? 'wrong' : 'unanswered'}`}>
-                                                {answer.isCorrect ? '✅ Correct' : answer.isAnswered ? '❌ Wrong' : '⚠️ Unanswered'}
-                                            </span>
+                                            {!answer.isAnswered && (
+                                                <span className="answer-status unanswered">⚠️ Unanswered</span>
+                                            )}
                                         </div>
                                         <div className="question-text">{answer.question}</div>
                                         <div className="options-list">
