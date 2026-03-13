@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 5001;
 console.log('Environment Debug:');
 console.log('PORT:', process.env.PORT);
 console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_DATABASE:', process.env.DB_DATABASE);
 console.log('Using PORT:', PORT);
 
 // Middleware
