@@ -73,7 +73,7 @@ const Result = () => {
         <div className="result-container">
             <div className="result-card">
                 <div className="result-header">
-                    <h1>🎉 Exam Completed!</h1>
+                    <h1>🎉 Technical Quiz Completed!</h1>
                     <p>Thank you for participating. Your response has been recorded.</p>
                 </div>
 
@@ -108,7 +108,7 @@ const Result = () => {
                     {showAnswers && answerDetails && answerDetails.length > 0 && (
                         <div className="answer-details-section">
                             <div className="details-header">
-                                <h2>Detailed Answer Analysis</h2>
+                                <h2>Technical Quiz Analysis</h2>
                             </div>
                             <div className="answer-list">
                                 {answerDetails

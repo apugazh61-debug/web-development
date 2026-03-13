@@ -381,7 +381,7 @@ const ExamPage = () => {
             )}
             <div className="exam-header">
                 <div className="exam-title">
-                    <h1>📝 Online Examination</h1>
+                    <h1>📝 Technical Quiz</h1>
                     <p>Question {currentQuestionIndex + 1} of {questions.length}</p>
                 </div>
                 <Timer onTimeUp={handleTimeUp} />

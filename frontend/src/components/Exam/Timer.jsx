@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './Timer.css';
 
 const Timer = ({ onTimeUp }) => {
-    const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes = 1200 seconds
+    const [timeLeft, setTimeLeft] = useState(1800); // 30 minutes = 1800 seconds
 
     useEffect(() => {
         if (timeLeft <= 0) {

@@ -46,26 +46,27 @@ const Instructions = () => {
         <div className="instructions-container">
             <div className="instructions-card">
                 <div className="instructions-header">
-                    <h1>📋 Examination Instructions</h1>
+                    <h1>📋 Technical Quiz Instructions</h1>
                     <button onClick={handleLogout} className="logout-btn">Logout</button>
                 </div>
 
                 <div className="instructions-content">
                     <div className="instruction-section">
                         <h2>⚠️ Important Information</h2>
-                        <p>Please read the following instructions carefully before starting the examination.</p>
+                        <p>Please read the following instructions carefully before starting the Technical Quiz.</p>
                     </div>
 
                     <div className="instruction-section">
                         <h3>📊 Test Structure</h3>
                         <ul>
-                            <li>This test contains <strong>30 multiple-choice questions</strong></li>
+                            <li>This test contains <strong>60 multiple-choice questions</strong></li>
                             <li>Total duration of the exam is <strong>30 minutes</strong></li>
-                            <li>The test is divided into <strong>3 sections</strong>:
+                            <li>The test covers <strong>Technical Fundamentals</strong>:
                                 <ul className="subsection">
-                                    <li>Aptitude (10 questions)</li>
-                                    <li>Programming (10 questions)</li>
-                                    <li>Problem Solving (10 questions)</li>
+                                    <li>Data Structures & Algorithms</li>
+                                    <li>Operating Systems & DBMS</li>
+                                    <li>Programming Languages (Python, Java, C)</li>
+                                    <li>Networking & Security</li>
                                 </ul>
                             </li>
                         </ul>
