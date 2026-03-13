@@ -99,7 +99,7 @@ const Register = () => {
         <div className="auth-container">
             <div className="auth-card">
                 <div className="college-logo">
-                    <span className="master-logo-text">Web Design</span>
+                    <span className="master-logo-text">Tech Quiz</span>
                 </div>
                 <h1>Register</h1>
 
