@@ -46,7 +46,9 @@ router.get('/dashboard-data', verifyToken, isAdmin, async (req, res) => {
 
         // Fetch Settings
         const settingsRes = await query("SELECT value FROM settings WHERE key = 'general'");
-        const settings = settingsRes.rows[0]?.value || { allowExam: false };
+        const settings = settingsRes.rows[0]?.value || { allowExam: false, showAnswers: false, showLeaderboard: false, allowLogin: true, allowRegister: true };
+        if (settings.allowLogin === undefined) settings.allowLogin = true;
+        if (settings.allowRegister === undefined) settings.allowRegister = true;
 
         res.json({ users, results, settings });
     } catch (error) {
@@ -55,18 +57,20 @@ router.get('/dashboard-data', verifyToken, isAdmin, async (req, res) => {
     }
 });
 
-// Toggle Exam Access & Show Answers & Leaderboard
+// Toggle Exam Access & Show Answers & Leaderboard & Portal (Login/Register) Access
 router.post('/toggle-exam', verifyToken, isAdmin, async (req, res) => {
     try {
-        const { allowExam, showAnswers, showLeaderboard } = req.body;
+        const { allowExam, showAnswers, showLeaderboard, allowLogin, allowRegister } = req.body;
         // Fetch current settings first
         const current = await query("SELECT value FROM settings WHERE key = 'general'");
-        const existing = current.rows[0]?.value || { allowExam: false, showAnswers: false, showLeaderboard: false };
+        const existing = current.rows[0]?.value || { allowExam: false, showAnswers: false, showLeaderboard: false, allowLogin: true, allowRegister: true };
         const merged = {
             ...existing,
             ...(allowExam !== undefined ? { allowExam } : {}),
             ...(showAnswers !== undefined ? { showAnswers } : {}),
             ...(showLeaderboard !== undefined ? { showLeaderboard } : {}),
+            ...(allowLogin !== undefined ? { allowLogin } : {}),
+            ...(allowRegister !== undefined ? { allowRegister } : {}),
         };
         await query(
             "INSERT INTO settings (key, value) VALUES ('general', $1::jsonb) ON CONFLICT (key) DO UPDATE SET value = $1::jsonb",

@@ -8,6 +8,13 @@ const verifyToken = require('../middleware/auth');
 // Register user
 router.post('/register', async (req, res) => {
     try {
+        // Check if registration is allowed by admin
+        const settingsRes = await query("SELECT value FROM settings WHERE key = 'general'");
+        const settings = settingsRes.rows[0]?.value || { allowRegister: true };
+        if (settings.allowRegister === false) {
+            return res.status(403).json({ error: 'Registration is currently closed by administrator' });
+        }
+
         const { fullName, email, password } = req.body;
 
         // Check if user already exists
@@ -44,6 +51,15 @@ router.post('/login', async (req, res) => {
         }
 
         const user = userResult.rows[0];
+
+        // Check if student login is disabled (Admins can ALWAYS login)
+        if (!user.is_admin) {
+            const settingsRes = await query("SELECT value FROM settings WHERE key = 'general'");
+            const settings = settingsRes.rows[0]?.value || { allowLogin: true };
+            if (settings.allowLogin === false) {
+                return res.status(403).json({ error: 'Student login is currently closed by administrator' });
+            }
+        }
 
         // Verify password
         const isMatch = await bcrypt.compare(password, user.password);

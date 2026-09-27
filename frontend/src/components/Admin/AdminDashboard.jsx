@@ -12,6 +12,8 @@ const AdminDashboard = () => {
     const [allowExam, setAllowExam] = useState(() => localStorage.getItem('adminAllowExam') === 'true');
     const [showAnswers, setShowAnswers] = useState(() => localStorage.getItem('adminShowAnswers') === 'true');
     const [showLeaderboard, setShowLeaderboard] = useState(() => localStorage.getItem('adminShowLeaderboard') === 'true');
+    const [allowLogin, setAllowLogin] = useState(() => localStorage.getItem('adminAllowLogin') !== 'false');
+    const [allowRegister, setAllowRegister] = useState(() => localStorage.getItem('adminAllowRegister') !== 'false');
     const [loading, setLoading] = useState(true);
 
     const fetchData = useCallback(async () => {
@@ -56,12 +58,18 @@ const AdminDashboard = () => {
             const ae = data.settings?.allowExam || false;
             const sa = data.settings?.showAnswers || false;
             const sl = data.settings?.showLeaderboard || false;
+            const al = data.settings?.allowLogin !== false;
+            const ar = data.settings?.allowRegister !== false;
             setAllowExam(ae);
             setShowAnswers(sa);
             setShowLeaderboard(sl);
+            setAllowLogin(al);
+            setAllowRegister(ar);
             localStorage.setItem('adminAllowExam', ae);
             localStorage.setItem('adminShowAnswers', sa);
             localStorage.setItem('adminShowLeaderboard', sl);
+            localStorage.setItem('adminAllowLogin', al);
+            localStorage.setItem('adminAllowRegister', ar);
 
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -152,6 +160,54 @@ const AdminDashboard = () => {
         } catch (error) {
             console.error('Error toggling leaderboard:', error);
             alert('Failed to update: ' + error.message);
+        }
+    };
+
+    const handleToggleLogin = async () => {
+        try {
+            const newValue = !allowLogin;
+            const token = localStorage.getItem('token');
+            const response = await fetch(`${API_BASE_URL}/toggle-exam`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ allowLogin: newValue })
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to update login access');
+            }
+            setAllowLogin(newValue);
+            localStorage.setItem('adminAllowLogin', newValue);
+        } catch (error) {
+            console.error('Error toggling login access:', error);
+            alert('Failed to update login access: ' + error.message);
+        }
+    };
+
+    const handleToggleRegister = async () => {
+        try {
+            const newValue = !allowRegister;
+            const token = localStorage.getItem('token');
+            const response = await fetch(`${API_BASE_URL}/toggle-exam`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ allowRegister: newValue })
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to update register access');
+            }
+            setAllowRegister(newValue);
+            localStorage.setItem('adminAllowRegister', newValue);
+        } catch (error) {
+            console.error('Error toggling register access:', error);
+            alert('Failed to update register access: ' + error.message);
         }
     };
 
@@ -303,6 +359,41 @@ const AdminDashboard = () => {
                         </label>
                         <span className={`status-text ${showLeaderboard ? 'allow' : 'block'}`}>
                             {showLeaderboard ? "VISIBLE" : "HIDDEN"}
+                        </span>
+                    </div>
+
+                    <div style={{ margin: '1.5rem 0 1rem 0', borderTop: '1px solid rgba(255,255,255,0.15)' }}></div>
+                    <h3 style={{ fontSize: '1.15rem', color: '#ffb703', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        🌐 Portal & Page Access Controls
+                    </h3>
+
+                    <div className="toggle-container">
+                        <span className="toggle-label">Allow Student Login (Login Page):</span>
+                        <label className="switch">
+                            <input
+                                type="checkbox"
+                                checked={allowLogin}
+                                onChange={handleToggleLogin}
+                            />
+                            <span className="slider round"></span>
+                        </label>
+                        <span className={`status-text ${allowLogin ? 'allow' : 'block'}`}>
+                            {allowLogin ? "ALLOWED" : "OFF"}
+                        </span>
+                    </div>
+
+                    <div className="toggle-container" style={{marginTop: '1.2rem'}}>
+                        <span className="toggle-label">Allow Student Registration (Register Page):</span>
+                        <label className="switch">
+                            <input
+                                type="checkbox"
+                                checked={allowRegister}
+                                onChange={handleToggleRegister}
+                            />
+                            <span className="slider round"></span>
+                        </label>
+                        <span className={`status-text ${allowRegister ? 'allow' : 'block'}`}>
+                            {allowRegister ? "ALLOWED" : "OFF"}
                         </span>
                     </div>
                 </div>

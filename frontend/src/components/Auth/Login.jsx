@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Preloader from './Preloader';
+import AdminAccessModal from './AdminAccessModal';
 import './Auth.css';
 import API_BASE_URL from '../../config';
 
@@ -14,11 +15,43 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showPreloader, setShowPreloader] = useState(true);
+    const [portalSettings, setPortalSettings] = useState({
+        allowLogin: true,
+        allowRegister: true
+    });
+    const [showAdminModal, setShowAdminModal] = useState(false);
+
+    useEffect(() => {
+        const fetchStatus = async () => {
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/exam/status`);
+                if (res.ok) {
+                    const data = await res.json();
+                    setPortalSettings({
+                        allowLogin: data.allowLogin !== false,
+                        allowRegister: data.allowRegister !== false
+                    });
+                }
+            } catch (err) {
+                console.error('Error fetching portal settings:', err);
+            }
+        };
+        fetchStatus();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
         setError('');
+    };
+
+    const handleThendralClick = () => {
+        const isAdmin = localStorage.getItem('isAdmin') === 'true';
+        if (isAdmin) {
+            navigate('/admin');
+        } else {
+            setShowAdminModal(true);
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -91,6 +124,9 @@ const Login = () => {
         }
     };
 
+    const isBothOff = !portalSettings.allowLogin && !portalSettings.allowRegister;
+    const isLoginOnlyOff = !portalSettings.allowLogin && portalSettings.allowRegister;
+
     return (
         <>
             {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
@@ -99,65 +135,100 @@ const Login = () => {
                     <div className="college-logo">
                         <span className="master-logo-text">Tech Quiz</span>
                     </div>
-                    <h1>Login</h1>
-                    
 
-                    {error && <div className="message error">{error}</div>}
-
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="Enter your email"
-                                autoComplete="email"
-                            />
+                    {isBothOff ? (
+                        <div className="portal-closed-box">
+                            <div className="portal-closed-icon">🔒</div>
+                            <h2 className="portal-closed-title">Portal Temporarily Closed</h2>
+                            <p className="portal-closed-desc">
+                                Both Registration and Login are currently disabled by administration.
+                            </p>
                         </div>
-
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <div className="password-input-wrapper">
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    id="password"
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                    placeholder="Enter your password"
-                                    autoComplete="current-password"
-                                />
-                                <button
-                                    type="button"
-                                    className="password-toggle"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    aria-label={showPassword ? "Hide password" : "Show password"}
-                                >
-                                    {showPassword ? "👁️" : "👁️‍🗨️"}
-                                </button>
+                    ) : isLoginOnlyOff ? (
+                        <>
+                            <div className="portal-closed-box">
+                                <div className="portal-closed-icon">🔒</div>
+                                <h2 className="portal-closed-title">Student Login Closed</h2>
+                                <p className="portal-closed-desc">
+                                    Student login is currently disabled by administration.
+                                </p>
                             </div>
-                        </div>
+                            <p className="auth-footer">
+                                New participant? <Link to="/register">Register here</Link>
+                            </p>
+                        </>
+                    ) : (
+                        <>
+                            <h1>Login</h1>
+                            {error && <div className="message error">{error}</div>}
 
-                        <button type="submit" className="btn-primary" disabled={loading}>
-                            {loading ? 'Logging in...' : 'Login'}
-                        </button>
-                    </form>
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="email">Email</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="Enter your email"
+                                        autoComplete="email"
+                                    />
+                                </div>
 
-                    <p className="auth-footer">
-                        Don't have an account? <Link to="/register">Register here</Link>
-                    </p>
+                                <div className="form-group">
+                                    <label htmlFor="password">Password</label>
+                                    <div className="password-input-wrapper">
+                                        <input
+                                            type={showPassword ? "text" : "password"}
+                                            id="password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                            placeholder="Enter your password"
+                                            autoComplete="current-password"
+                                        />
+                                        <button
+                                            type="button"
+                                            className="password-toggle"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            aria-label={showPassword ? "Hide password" : "Show password"}
+                                        >
+                                            {showPassword ? "👁️" : "👁️‍🗨️"}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button type="submit" className="btn-primary" disabled={loading}>
+                                    {loading ? 'Logging in...' : 'Login'}
+                                </button>
+                            </form>
+
+                            {portalSettings.allowRegister && (
+                                <p className="auth-footer">
+                                    Don't have an account? <Link to="/register">Register here</Link>
+                                </p>
+                            )}
+                        </>
+                    )}
 
                     <div className="creator-credit-card">
                         <div className="credit-separator"></div>
                         <p className="credit-text-card">
-                            Product By: Thendral Community
+                            Product By: <span className="thendral-access-btn" onClick={handleThendralClick} title="Thendral Community - Touch for Admin Access" role="button" tabIndex={0}>Thendral Community</span>
                         </p>
                     </div>
                 </div>
             </div>
+
+            <AdminAccessModal
+                isOpen={showAdminModal}
+                onClose={() => setShowAdminModal(false)}
+                onSuccess={() => {
+                    setShowAdminModal(false);
+                    navigate('/admin');
+                }}
+            />
         </>
     );
 };

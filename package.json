@@ -1,4 +1,9 @@
 {
+  "name": "tech-quiz-portal",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build"
+  },
   "dependencies": {
     "prop-types": "^15.8.1"
   }

@@ -21,15 +21,17 @@ router.get('/questions', verifyToken, async (req, res) => {
     }
 });
 
-// Get exam status (allowed or not)
+// Get exam and portal status (allowed or not)
 router.get('/status', async (req, res) => {
     try {
         const result = await query("SELECT value FROM settings WHERE key = 'general'");
-        const settings = result.rows[0]?.value || { allowExam: false };
+        const settings = result.rows[0]?.value || { allowExam: false, allowLogin: true, allowRegister: true };
+        if (settings.allowLogin === undefined) settings.allowLogin = true;
+        if (settings.allowRegister === undefined) settings.allowRegister = true;
         res.json(settings);
     } catch (error) {
         console.error('Get status error:', error);
-        res.status(500).json({ error: 'Failed to get exam status' });
+        res.status(500).json({ error: 'Failed to get status' });
     }
 });
 
