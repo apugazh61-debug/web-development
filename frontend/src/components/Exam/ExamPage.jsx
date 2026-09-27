@@ -54,7 +54,13 @@ const ExamPage = () => {
                     console.warn('Network error loading questions:', fetchErr);
                 }
 
-                if (!fetchedQuestions || fetchedQuestions.length === 0) {
+                if (!fetchedQuestions || 
+                    fetchedQuestions.length === 0 || 
+                    fetchedQuestions.length === 60 || 
+                    fetchedQuestions[0]?.question?.includes('memory management') || 
+                    fetchedQuestions[0]?.question?.includes('Which') || 
+                    !fetchedQuestions[0]?.section?.includes('தமிழ்')) {
+                    console.log('Switching to 100 TNPSC Tamil questions dataset');
                     fetchedQuestions = defaultQuestions;
                 }
                 
@@ -393,8 +399,8 @@ const ExamPage = () => {
             )}
             <div className="exam-header">
                 <div className="exam-title">
-                    <h1>📝 Technical Quiz</h1>
-                    <p>Question {currentQuestionIndex + 1} of {questions.length}</p>
+                    <h1>📝 TNPSC GROUP 4 - பொதுத் தமிழ்</h1>
+                    <p>வினா {currentQuestionIndex + 1} / {questions.length}</p>
                 </div>
                 <Timer onTimeUp={handleTimeUp} />
             </div>

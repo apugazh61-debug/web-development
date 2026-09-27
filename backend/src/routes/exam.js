@@ -10,8 +10,8 @@ router.get('/questions', verifyToken, async (req, res) => {
     try {
         let result = await query('SELECT id, section, question_text as question, options, correct_answer as "correctAnswer" FROM questions ORDER BY id ASC');
 
-        // If DB has 0 questions or old 30/40 questions, auto-sync with the 100 TNPSC Tamil questions
-        if (!result.rows || result.rows.length === 0 || (result.rows.length < 50 && result.rows[0]?.section === 'Aptitude')) {
+        // If DB has 0 questions or old 60 English questions, auto-sync with the 100 TNPSC Tamil questions
+        if (!result.rows || result.rows.length !== defaultQuestions.length || !result.rows[0]?.section?.includes('தமிழ்') || result.rows[0]?.question?.includes('memory management')) {
             try {
                 await query('DELETE FROM questions');
                 for (const q of defaultQuestions) {
