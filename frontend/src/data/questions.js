@@ -1,7 +1,7 @@
 const questions = [
   {
     "id": 1,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'இன்பத்தமிழ்' பாடலை இயற்றியவர் யார்?",
     "options": [
       "பாரதியார்",
@@ -13,7 +13,7 @@ const questions = [
   },
   {
     "id": 2,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'அசதி' என்னும் சொல்லின் பொருள் என்ன?",
     "options": [
       "மகிழ்ச்சி",
@@ -25,7 +25,7 @@ const questions = [
   },
   {
     "id": 3,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'சமூகம்' என்னும் சொல்லின் பொருள் என்ன?",
     "options": [
       "மக்கள் குழு",
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     "id": 4,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ஒரே ஓசையில் அடிகள் முடிவது என்ன எனப்படும்?",
     "options": [
       "எதுகைத் தொடை",
@@ -49,7 +49,7 @@ const questions = [
   },
   {
     "id": 5,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தொன்மை' என்னும் சொல்லின் பொருள் என்ன?",
     "options": [
       "புதுமை",
@@ -61,7 +61,7 @@ const questions = [
   },
   {
     "id": 6,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'இடப்புறம்' என்னும் சொல்லைப் பிரித்தால் கிடைப்பது?",
     "options": [
       "இடன் + புறம்",
@@ -73,7 +73,7 @@ const questions = [
   },
   {
     "id": 7,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "தமிழ் இலக்கண வகைகள் எத்தனை?",
     "options": [
       "மூன்று",
@@ -85,7 +85,7 @@ const questions = [
   },
   {
     "id": 8,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "தமிழ் இலக்கண வகைகளுள் இல்லாதது எது?",
     "options": [
       "எழுத்து இலக்கணம்",
@@ -97,7 +97,7 @@ const questions = [
   },
   {
     "id": 9,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "உயிர் எழுத்துகளின் எண்ணிக்கை என்ன?",
     "options": [
       "10",
@@ -109,7 +109,7 @@ const questions = [
   },
   {
     "id": 10,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மெய் எழுத்துகளின் எண்ணிக்கை என்ன?",
     "options": [
       "12",
@@ -121,7 +121,7 @@ const questions = [
   },
   {
     "id": 11,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "உயிர்மெய் எழுத்துகளின் மொத்த எண்ணிக்கை என்ன?",
     "options": [
       "210",
@@ -133,7 +133,7 @@ const questions = [
   },
   {
     "id": 12,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "குறில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "4",
@@ -145,7 +145,7 @@ const questions = [
   },
   {
     "id": 13,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "நெடில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "5",
@@ -157,7 +157,7 @@ const questions = [
   },
   {
     "id": 14,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "குறில் எழுத்து ஒலிக்கும் கால அளவு என்ன?",
     "options": [
       "½ மாத்திரை",
@@ -169,7 +169,7 @@ const questions = [
   },
   {
     "id": 15,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "நெடில் எழுத்து ஒலிக்கும் கால அளவு என்ன?",
     "options": [
       "½ மாத்திரை",
@@ -181,7 +181,7 @@ const questions = [
   },
   {
     "id": 16,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மெய் எழுத்துகளில் வன்மையாக ஒலிப்பவை எத்தனை?",
     "options": [
       "5",
@@ -193,7 +193,7 @@ const questions = [
   },
   {
     "id": 17,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மெய் எழுத்துகளில் மென்மையாக ஒலிப்பவை எத்தனை?",
     "options": [
       "5",
@@ -205,7 +205,7 @@ const questions = [
   },
   {
     "id": 18,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மெய் எழுத்துகளில் இடைநிலையில் ஒலிப்பவை எத்தனை?",
     "options": [
       "5",
@@ -217,7 +217,7 @@ const questions = [
   },
   {
     "id": 19,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "க் + அ என்பது எவ்வகை?",
     "options": [
       "உயிர்",
@@ -229,7 +229,7 @@ const questions = [
   },
   {
     "id": 20,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ம் + ஆ என்பது எவ்வகை?",
     "options": [
       "உயிர்",
@@ -241,7 +241,7 @@ const questions = [
   },
   {
     "id": 21,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ஞ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "2",
@@ -253,7 +253,7 @@ const questions = [
   },
   {
     "id": 22,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ய வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "4",
@@ -265,7 +265,7 @@ const questions = [
   },
   {
     "id": 23,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "வ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "6",
@@ -277,7 +277,7 @@ const questions = [
   },
   {
     "id": 24,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மொழிக்கு முதலில் ஒருபோதும் வராதவை எவை?",
     "options": [
       "உயிர் எழுத்துகள்",
@@ -289,7 +289,7 @@ const questions = [
   },
   {
     "id": 25,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ட, ண, ர, ல, ழ, ள, ற, ன வரிசை உயிர்மெய் எழுத்துகள் சொல்லின் முதலில் எவ்வாறு வரும்?",
     "options": [
       "எப்போதும் வரும்",
@@ -301,7 +301,7 @@ const questions = [
   },
   {
     "id": 26,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'கண்ணா வா!' என்பது எத்தொடர்?",
     "options": [
       "எழுவாய்த் தொடர்",
@@ -313,7 +313,7 @@ const questions = [
   },
   {
     "id": 27,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'நன்று நன்று நன்று' – ஒரே சொல் பலமுறை அடுக்கி வருவது எத்தொடர்?",
     "options": [
       "உரிச்சொல் தொடர்",
@@ -325,7 +325,7 @@ const questions = [
   },
   {
     "id": 28,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "தொகாநிலைத் தொடர்கள் எத்தனை வகைப்படும்?",
     "options": [
       "5",
@@ -337,7 +337,7 @@ const questions = [
   },
   {
     "id": 29,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'சிக்கனம்' குறித்த பெரியாரின் கருத்துகள் எந்தப் பாடத்தில் இடம்பெறுகின்றன?",
     "options": [
       "பெரியாரின் சிந்தனைகள்",
@@ -349,7 +349,7 @@ const questions = [
   },
   {
     "id": 30,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மூவசைச் சீரில் அமைந்த பெயருக்கு எடுத்துக்காட்டு எது?",
     "options": [
       "இராமன்",
@@ -361,7 +361,7 @@ const questions = [
   },
   {
     "id": 31,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ஒன்பதாம் வகுப்பு பாடநூலில் உள்ள இயல்களின் எண்ணிக்கை எத்தனை?",
     "options": [
       "5",
@@ -373,7 +373,7 @@ const questions = [
   },
   {
     "id": 32,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ஒன்பதாம் வகுப்பு இயல் 1-ன் பொருண்மை என்ன?",
     "options": [
       "மொழி",
@@ -385,7 +385,7 @@ const questions = [
   },
   {
     "id": 33,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'மணற்கேணி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 3",
@@ -397,7 +397,7 @@ const questions = [
   },
   {
     "id": 34,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'நிலா முற்றம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 4",
@@ -409,7 +409,7 @@ const questions = [
   },
   {
     "id": 35,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'விதை நெல்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 5",
@@ -421,7 +421,7 @@ const questions = [
   },
   {
     "id": 36,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'பெருவழி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 5",
@@ -433,7 +433,7 @@ const questions = [
   },
   {
     "id": 37,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "திருக்குறள் மொத்தம் எத்தனை அதிகாரங்களைக் கொண்டது?",
     "options": [
       "130",
@@ -445,7 +445,7 @@ const questions = [
   },
   {
     "id": 38,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்த்தேன்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் ஒன்று",
@@ -457,7 +457,7 @@ const questions = [
   },
   {
     "id": 39,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'இயற்கை இன்பம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் ஒன்று",
@@ -469,7 +469,7 @@ const questions = [
   },
   {
     "id": 40,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாடநூலில் இலக்கணப் பகுதிக்குரிய தலைப்பு எது?",
     "options": [
       "உரைநடை உலகம்",
@@ -481,7 +481,7 @@ const questions = [
   },
   {
     "id": 41,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாடநூலில் படக்கதை/நீட்டிக்கப்பட்ட உரைநடைக்குரிய தலைப்பு எது?",
     "options": [
       "உரைநடை உலகம்",
@@ -493,7 +493,7 @@ const questions = [
   },
   {
     "id": 42,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்மொழி வாழ்த்து' பாடலை இயற்றியவர் யார்?",
     "options": [
       "பாரதியார்",
@@ -505,7 +505,7 @@ const questions = [
   },
   {
     "id": 43,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மக்கள் வாழும் நிலைப்பகுதியைக் குறிக்கும் சொல் எது?",
     "options": [
       "வைப்பு",
@@ -517,7 +517,7 @@ const questions = [
   },
   {
     "id": 44,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'என்றென்றும்' என்னும் சொல்லைப் பிரித்தால் கிடைப்பது?",
     "options": [
       "என்று + என்றும்",
@@ -529,7 +529,7 @@ const questions = [
   },
   {
     "id": 45,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்மொழி வாழ்த்து' பாடலை இயற்றியவர் யார்?",
     "options": [
       "பாரதியார்",
@@ -541,7 +541,7 @@ const questions = [
   },
   {
     "id": 46,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'எங்கள் தமிழ்' பாடலை இயற்றியவர் யார்?",
     "options": [
       "பாரதியார்",
@@ -553,7 +553,7 @@ const questions = [
   },
   {
     "id": 47,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'நெறி' என்பதன் பொருள் என்ன?",
     "options": [
       "வழி",
@@ -565,7 +565,7 @@ const questions = [
   },
   {
     "id": 48,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'குரலாகும்' என்னும் சொல்லைப் பிரித்தால்?",
     "options": [
       "குரல் + ஆகும்",
@@ -577,7 +577,7 @@ const questions = [
   },
   {
     "id": 49,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'வான் + ஒலி' என்பதன் சேர்க்கை என்ன?",
     "options": [
       "வானொலி",
@@ -589,7 +589,7 @@ const questions = [
   },
   {
     "id": 50,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'அசை' எத்தனை வகைப்படும்?",
     "options": [
       "1",
@@ -601,7 +601,7 @@ const questions = [
   },
   {
     "id": 51,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'விடும்' என்பது எவ்வகை அசை?",
     "options": [
       "நேரசை",
@@ -613,7 +613,7 @@ const questions = [
   },
   {
     "id": 52,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "அடி எத்தனை வகைப்படும்?",
     "options": [
       "2",
@@ -625,7 +625,7 @@ const questions = [
   },
   {
     "id": 53,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "முதல் எழுத்து ஒன்றி வரத் தொடுப்பது எது?",
     "options": [
       "எதுகை",
@@ -637,7 +637,7 @@ const questions = [
   },
   {
     "id": 54,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "வெண்பாவின் ஓசை என்ன?",
     "options": [
       "அகவலோசை",
@@ -649,7 +649,7 @@ const questions = [
   },
   {
     "id": 55,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்விடு தூது' என்பது எவ்வகை இலக்கியம்?",
     "options": [
       "காப்பியம்",
@@ -661,7 +661,7 @@ const questions = [
   },
   {
     "id": 56,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்விடு தூது' முதன்முதலில் பதிப்பித்தவர் யார்?",
     "options": [
       "உ.வே. சாமிநாதையர்",
@@ -673,7 +673,7 @@ const questions = [
   },
   {
     "id": 57,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்விடு தூது' எத்தனை கண்ணிகளைக் கொண்டது?",
     "options": [
       "168",
@@ -685,7 +685,7 @@ const questions = [
   },
   {
     "id": 58,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்விடு தூது' நூலின் ஆசிரியர் யார்?",
     "options": [
       "உ.வே. சாமிநாதையர்",
@@ -697,7 +697,7 @@ const questions = [
   },
   {
     "id": 59,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "திருக்குறள் மொத்தம் எத்தனை அதிகாரங்களைக் கொண்டது?",
     "options": [
       "130",
@@ -709,7 +709,7 @@ const questions = [
   },
   {
     "id": 60,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "கபிலர் என்னும் சொல்லின் மாத்திரை அளவு என்ன?",
     "options": [
       "1+1+1+½ = 3½",
@@ -721,7 +721,7 @@ const questions = [
   },
   {
     "id": 61,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பத்தாம் வகுப்பு பாடநூலில் உள்ள இயல்களின் எண்ணிக்கை எத்தனை?",
     "options": [
       "5",
@@ -733,7 +733,7 @@ const questions = [
   },
   {
     "id": 62,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "இயல் 1-ன் பொருண்மை என்ன?",
     "options": [
       "மொழி, மனிதம்",
@@ -745,7 +745,7 @@ const questions = [
   },
   {
     "id": 63,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "இயல் 2-ன் பொருண்மை என்ன?",
     "options": [
       "மொழி, மனிதம்",
@@ -757,7 +757,7 @@ const questions = [
   },
   {
     "id": 64,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "இயல் 3-ன் பொருண்மை என்ன?",
     "options": [
       "இயற்கை, அறிவியல்",
@@ -769,7 +769,7 @@ const questions = [
   },
   {
     "id": 65,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "இயல் 4-ன் பொருண்மை என்ன?",
     "options": [
       "பண்பாடு",
@@ -781,7 +781,7 @@ const questions = [
   },
   {
     "id": 66,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'இந்தியாவின் பறவை மனிதர்' என்று அழைக்கப்படுபவர் யார்?",
     "options": [
       "சாலிம் அலி",
@@ -793,7 +793,7 @@ const questions = [
   },
   {
     "id": 67,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "Ornithology என்பது எதைப் பற்றிய படிப்பு?",
     "options": [
       "விலங்குகள்",
@@ -805,7 +805,7 @@ const questions = [
   },
   {
     "id": 68,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "உலகச் சிட்டுக்குருவிகள் நாள் எப்போது?",
     "options": [
       "மார்ச் 20",
@@ -817,7 +817,7 @@ const questions = [
   },
   {
     "id": 69,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தட்பவெப்பம்' என்னும் சொல்லைப் பிரித்தால்?",
     "options": [
       "தட்ப + வெப்பம்",
@@ -829,7 +829,7 @@ const questions = [
   },
   {
     "id": 70,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாவாணர் இயக்குநராகப் பணியாற்றிய திட்டம் எது?",
     "options": [
       "செந்தமிழ்ச் சொற்பிறப்பியல் அகரமுதலித் திட்டம்",
@@ -841,7 +841,7 @@ const questions = [
   },
   {
     "id": 71,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாவாணர் நிறுவித் தலைவராக இருந்த அமைப்பு எது?",
     "options": [
       "உலகத் தமிழ்க் கழகம்",
@@ -853,7 +853,7 @@ const questions = [
   },
   {
     "id": 72,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாவாணரின் 'சொல்லாய்வுக் கட்டுரைகள்' நூலில் உள்ள பாடம் எது?",
     "options": [
       "தமிழ்ச்சொல் வளம்",
@@ -865,7 +865,7 @@ const questions = [
   },
   {
     "id": 73,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'சிக்கனம்' குறித்த பெரியாரின் கருத்துகள் எந்தப் பாடத்தில் இடம்பெறுகின்றன?",
     "options": [
       "பெரியாரின் சிந்தனைகள்",
@@ -877,7 +877,7 @@ const questions = [
   },
   {
     "id": 74,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மூவசைச் சீரில் அமைந்த பெயருக்கு எடுத்துக்காட்டு எது?",
     "options": [
       "இராமன்",
@@ -889,7 +889,7 @@ const questions = [
   },
   {
     "id": 75,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'மணற்கேணி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 3",
@@ -901,7 +901,7 @@ const questions = [
   },
   {
     "id": 76,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'நிலா முற்றம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 4",
@@ -913,7 +913,7 @@ const questions = [
   },
   {
     "id": 77,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'விதை நெல்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 5",
@@ -925,7 +925,7 @@ const questions = [
   },
   {
     "id": 78,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'பெருவழி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் 5",
@@ -937,7 +937,7 @@ const questions = [
   },
   {
     "id": 79,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'தமிழ்த்தேன்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் ஒன்று",
@@ -949,7 +949,7 @@ const questions = [
   },
   {
     "id": 80,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'இயற்கை இன்பம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
       "இயல் ஒன்று",
@@ -961,7 +961,7 @@ const questions = [
   },
   {
     "id": 81,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாடநூலில் இலக்கணப் பகுதிக்குரிய தலைப்பு எது?",
     "options": [
       "உரைநடை உலகம்",
@@ -973,7 +973,7 @@ const questions = [
   },
   {
     "id": 82,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "பாடநூலில் படக்கதை/நீட்டிக்கப்பட்ட உரைநடைக்குரிய தலைப்பு எது?",
     "options": [
       "உரைநடை உலகம்",
@@ -985,7 +985,7 @@ const questions = [
   },
   {
     "id": 83,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ஞ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "2",
@@ -997,7 +997,7 @@ const questions = [
   },
   {
     "id": 84,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ய வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "4",
@@ -1009,7 +1009,7 @@ const questions = [
   },
   {
     "id": 85,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "வ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "6",
@@ -1021,7 +1021,7 @@ const questions = [
   },
   {
     "id": 86,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மொழிக்கு முதலில் ஒருபோதும் வராதவை எவை?",
     "options": [
       "உயிர் எழுத்துகள்",
@@ -1033,7 +1033,7 @@ const questions = [
   },
   {
     "id": 87,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ட, ண, ர, ல, ழ, ள, ற, ன வரிசை உயிர்மெய் எழுத்துகள் சொல்லின் முதலில் எவ்வாறு வரும்?",
     "options": [
       "எப்போதும் வரும்",
@@ -1045,7 +1045,7 @@ const questions = [
   },
   {
     "id": 88,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'சாலைவும் நன்று' என்பதில் 'சாலை' எனும் உரிச்சொல் வெளிப்படையாக வந்துள்ளதால் இது என்ன தொடர்?",
     "options": [
       "அடுக்குத்தொடர்",
@@ -1057,7 +1057,7 @@ const questions = [
   },
   {
     "id": 89,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'கண்ணா வா!' என்பது எத்தொடர்?",
     "options": [
       "எழுவாய்த் தொடர்",
@@ -1069,7 +1069,7 @@ const questions = [
   },
   {
     "id": 90,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "'நன்று நன்று நன்று' – ஒரே சொல் பலமுறை அடுக்கி வருவது எத்தொடர்?",
     "options": [
       "உரிச்சொல் தொடர்",
@@ -1081,7 +1081,7 @@ const questions = [
   },
   {
     "id": 91,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "தொகாநிலைத் தொடர்கள் எத்தனை வகைப்படும்?",
     "options": [
       "5",
@@ -1093,7 +1093,7 @@ const questions = [
   },
   {
     "id": 92,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "தமிழ் இலக்கண வகைகள் எத்தனை?",
     "options": [
       "மூன்று",
@@ -1105,7 +1105,7 @@ const questions = [
   },
   {
     "id": 93,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "உயிர் எழுத்துகளின் எண்ணிக்கை என்ன?",
     "options": [
       "10",
@@ -1117,7 +1117,7 @@ const questions = [
   },
   {
     "id": 94,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "மெய் எழுத்துகளின் எண்ணிக்கை என்ன?",
     "options": [
       "12",
@@ -1129,7 +1129,7 @@ const questions = [
   },
   {
     "id": 95,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "உயிர்மெய் எழுத்துகளின் மொத்த எண்ணிக்கை என்ன?",
     "options": [
       "210",
@@ -1141,7 +1141,7 @@ const questions = [
   },
   {
     "id": 96,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "குறில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "4",
@@ -1153,7 +1153,7 @@ const questions = [
   },
   {
     "id": 97,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "நெடில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
       "5",
@@ -1165,7 +1165,7 @@ const questions = [
   },
   {
     "id": 98,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "க் + அ என்பது எவ்வகை?",
     "options": [
       "உயிர்",
@@ -1177,7 +1177,7 @@ const questions = [
   },
   {
     "id": 99,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "ம் + ஆ என்பது எவ்வகை?",
     "options": [
       "உயிர்",
@@ -1189,7 +1189,7 @@ const questions = [
   },
   {
     "id": 100,
-    "section": "தமிழ் (Tamil)",
+    "section": "தமிழ் (General Tamil)",
     "question": "கபிலர் என்னும் சொல்லின் மாத்திரை அளவு என்ன?",
     "options": [
       "1+1+1+½ = 3½",
