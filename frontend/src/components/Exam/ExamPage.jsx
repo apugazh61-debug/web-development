@@ -219,10 +219,34 @@ const ExamPage = () => {
         setSubmitting(true);
 
         try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                navigate('/login');
-                return;
+            let token = localStorage.getItem('token');
+            const candidateName = localStorage.getItem('userName') || 'Direct Candidate';
+
+            // Ensure we have a genuine backend JWT token before submitting results
+            if (!token || token.startsWith('guest-token-')) {
+                const guestEmail = `guest_${Date.now()}_${Math.floor(Math.random() * 10000)}@thendral.quiz`;
+                const guestPass = 'Guest@Thendral123';
+                try {
+                    await fetch(`${API_BASE_URL}/api/auth/register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ fullName: candidateName, email: guestEmail, password: guestPass })
+                    });
+                    const logRes = await fetch(`${API_BASE_URL}/api/auth/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: guestEmail, password: guestPass })
+                    });
+                    if (logRes.ok) {
+                        const logData = await logRes.json();
+                        token = logData.token;
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('userId', logData.user.id);
+                        localStorage.setItem('userEmail', logData.user.email);
+                    }
+                } catch (tokErr) {
+                    console.warn('Auto-auth recovery note:', tokErr);
+                }
             }
 
             const timeTaken = Math.floor((Date.now() - startTimeRef.current) / 1000);
@@ -267,29 +291,57 @@ const ExamPage = () => {
 
             const totalScore = correctCount;
 
-            // Save results to backend
-            try {
-                const response = await fetch(`${API_BASE_URL}/api/result/submit`, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({
-                        totalScore,
-                        correctCount,
-                        wrongCount,
-                        sectionScores,
-                        timeTaken,
-                        answerDetails
-                    })
-                });
+            // Save results to backend with automatic retry and auth recovery
+            let submitSuccess = false;
+            for (let subAttempt = 1; subAttempt <= 3 && !submitSuccess; subAttempt++) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/result/submit`, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            totalScore,
+                            correctCount,
+                            wrongCount,
+                            sectionScores,
+                            timeTaken,
+                            answerDetails
+                        })
+                    });
 
-                if (!response.ok) {
-                    console.warn('Backend result submit note:', response.status);
+                    if (response.ok || response.status === 201) {
+                        submitSuccess = true;
+                        break;
+                    } else if (response.status === 401 && subAttempt === 1) {
+                        // Re-authenticate guest and retry submit
+                        const guestEmail = `guest_${Date.now()}_${Math.floor(Math.random() * 10000)}@thendral.quiz`;
+                        const guestPass = 'Guest@Thendral123';
+                        await fetch(`${API_BASE_URL}/api/auth/register`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ fullName: candidateName, email: guestEmail, password: guestPass })
+                        });
+                        const logRes = await fetch(`${API_BASE_URL}/api/auth/login`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email: guestEmail, password: guestPass })
+                        });
+                        if (logRes.ok) {
+                            const logData = await logRes.json();
+                            token = logData.token;
+                            localStorage.setItem('token', token);
+                            localStorage.setItem('userId', logData.user.id);
+                        }
+                    }
+                } catch (subErr) {
+                    console.warn(`Backend submit attempt ${subAttempt} network note:`, subErr);
                 }
-            } catch (subErr) {
-                console.warn('Backend submit network note:', subErr);
+
+                if (!submitSuccess && subAttempt < 3) {
+                    await new Promise(r => setTimeout(r, 1000));
+                }
             }
 
             // Check if admin has enabled leaderboard

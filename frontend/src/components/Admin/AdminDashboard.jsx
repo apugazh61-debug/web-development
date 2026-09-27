@@ -17,8 +17,8 @@ const AdminDashboard = () => {
     const [allowRegister, setAllowRegister] = useState(() => localStorage.getItem('adminAllowRegister') !== 'false');
     const [loading, setLoading] = useState(true);
 
-    const fetchData = useCallback(async () => {
-        setLoading(true);
+    const fetchData = useCallback(async (isInitial = false) => {
+        if (isInitial) setLoading(true);
         try {
             const token = localStorage.getItem('token');
             const response = await fetch(`${API_BASE_URL}/dashboard-data`, {
@@ -85,9 +85,12 @@ const AdminDashboard = () => {
 
         } catch (error) {
             console.error("Error fetching data:", error);
-            alert("Error loading dashboard data: " + error.message);
+            if (isInitial) {
+                alert("Error loading dashboard data: " + error.message);
+            }
+        } finally {
+            if (isInitial) setLoading(false);
         }
-        setLoading(false);
     }, []);
 
     useEffect(() => {
@@ -98,10 +101,17 @@ const AdminDashboard = () => {
                 navigate('/login');
                 return;
             }
-            fetchData();
+            fetchData(true);
         };
 
         checkAdmin();
+
+        // Auto-refresh data every 15 seconds to stream in new participants & submissions
+        const interval = setInterval(() => {
+            fetchData(false);
+        }, 15000);
+
+        return () => clearInterval(interval);
     }, [navigate, fetchData]);
 
     const handleToggleExam = async () => {
@@ -300,11 +310,11 @@ const AdminDashboard = () => {
             return;
         }
 
-        const headers = ["Rank", "Participant Name", "Email", "Score", "Time Taken"];
+        const headers = ["Rank", "Participant Name", "Entry Type / Email", "Score", "Time Taken"];
         const rows = leaderboard.map((result, index) => [
             index + 1,
             `"${result.fullName}"`,
-            `"${result.email}"`,
+            result.email?.startsWith('guest_') ? '"Direct Entry (Name Only)"' : `"${result.email}"`,
             result.totalScore,
             `"${Math.floor(result.timeTaken / 60)}m ${result.timeTaken % 60}s"`
         ]);
@@ -342,8 +352,22 @@ const AdminDashboard = () => {
     return (
         <div className="admin-dashboard-container">
             <div className="admin-header">
-                <h1 className="admin-title">Admin Dashboard</h1>
-                <div className="admin-controls">
+                <div>
+                    <h1 className="admin-title">Admin Dashboard</h1>
+                    <span style={{ fontSize: '12px', color: '#10b981', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
+                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
+                        Live updates active (auto-refreshes every 15s)
+                    </span>
+                </div>
+                <div className="admin-controls" style={{ display: 'flex', gap: '10px' }}>
+                    <button 
+                        className="btn-secondary" 
+                        onClick={() => fetchData(false)}
+                        style={{ padding: '8px 16px', fontSize: '13px', borderRadius: '8px', cursor: 'pointer', fontWeight: '600' }}
+                        title="Fetch latest participants and scores"
+                    >
+                        🔄 Refresh Data
+                    </button>
                     <button className="btn-logout" onClick={handleLogout}>Logout</button>
                 </div>
             </div>
@@ -452,17 +476,45 @@ const AdminDashboard = () => {
                             </thead>
                             <tbody>
                                 {users.length > 0 ? (
-                                    users.map(user => (
-                                        <tr key={user.uid}>
-                                            <td>{user.fullName}</td>
-                                            <td>{user.email}</td>
-                                            <td>
-                                                <span className={`badge ${user.hasAttempted ? 'success' : 'pending'}`}>
-                                                    {user.hasAttempted ? 'Completed' : 'Pending'}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))
+                                    users.map(user => {
+                                        const isGuest = user.email?.startsWith('guest_');
+                                        return (
+                                            <tr key={user.uid}>
+                                                <td>
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                        <strong style={{ color: '#fff' }}>{user.fullName}</strong>
+                                                        {isGuest && (
+                                                            <span style={{
+                                                                padding: '2px 8px',
+                                                                fontSize: '11px',
+                                                                borderRadius: '10px',
+                                                                background: 'rgba(255, 183, 3, 0.2)',
+                                                                color: '#ffb703',
+                                                                border: '1px solid rgba(255, 183, 3, 0.4)',
+                                                                fontWeight: '700'
+                                                            }}>
+                                                                Direct Entry
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {isGuest ? (
+                                                        <span style={{ color: '#94a3b8', fontStyle: 'italic', fontSize: '13px' }}>
+                                                            Direct (Name Only)
+                                                        </span>
+                                                    ) : (
+                                                        user.email
+                                                    )}
+                                                </td>
+                                                <td>
+                                                    <span className={`badge ${user.hasAttempted ? 'success' : 'pending'}`}>
+                                                        {user.hasAttempted ? 'Completed' : 'Pending'}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
                                 ) : (
                                     <tr><td colSpan="3" className="text-center">No users registered yet.</td></tr>
                                 )}
@@ -499,21 +551,41 @@ const AdminDashboard = () => {
                             </thead>
                             <tbody>
                                 {leaderboard.length > 0 ? (
-                                    leaderboard.map((result, index) => (
-                                        <tr key={result.id} className={index === 0 ? 'top-rank' : ''}>
-                                            <td><span className="rank-badge">{index + 1}</span></td>
-                                            <td>
-                                                <div className="participant-info">
-                                                    <strong>{result.fullName || 'Unknown'}</strong>
-                                                    <span className="participant-email">{result.email}</span>
-                                                </div>
-                                            </td>
-                                            <td><span className="attend-badge">{(result.correctCount || 0) + (result.wrongCount || 0)} / {result.answerDetails?.length || 100}</span></td>
-                                            <td><span className="correct-badge">{result.correctCount || 0}</span></td>
-                                            <td><strong className="score-text">{result.totalScore} / {result.answerDetails?.length || 100}</strong></td>
-                                            <td>{Math.floor(result.timeTaken / 60)}m {result.timeTaken % 60}s</td>
-                                        </tr>
-                                    ))
+                                    leaderboard.map((result, index) => {
+                                        const isGuest = result.email?.startsWith('guest_');
+                                        return (
+                                            <tr key={result.id} className={index === 0 ? 'top-rank' : ''}>
+                                                <td><span className="rank-badge">{index + 1}</span></td>
+                                                <td>
+                                                    <div className="participant-info">
+                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                            <strong>{result.fullName || 'Unknown'}</strong>
+                                                            {isGuest && (
+                                                                <span style={{
+                                                                    padding: '2px 8px',
+                                                                    fontSize: '10px',
+                                                                    borderRadius: '8px',
+                                                                    background: 'rgba(16, 185, 129, 0.25)',
+                                                                    color: '#10b981',
+                                                                    border: '1px solid rgba(16, 185, 129, 0.4)',
+                                                                    fontWeight: '700'
+                                                                }}>
+                                                                    Direct Entry
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <span className="participant-email">
+                                                            {isGuest ? 'Direct Participant (Name Only)' : result.email}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td><span className="attend-badge">{(result.correctCount || 0) + (result.wrongCount || 0)} / {result.answerDetails?.length || 100}</span></td>
+                                                <td><span className="correct-badge">{result.correctCount || 0}</span></td>
+                                                <td><strong className="score-text">{result.totalScore} / {result.answerDetails?.length || 100}</strong></td>
+                                                <td>{Math.floor(result.timeTaken / 60)}m {result.timeTaken % 60}s</td>
+                                            </tr>
+                                        );
+                                    })
                                 ) : (
                                     <tr>
                                         <td colSpan="6" className="text-center">No results available yet.</td>

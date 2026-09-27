@@ -94,34 +94,82 @@ const Login = () => {
 
         try {
             let authSuccess = false;
-            try {
-                const res = await fetch(`${API_BASE_URL}/api/auth/guest-entry`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ fullName: name })
-                });
-                if (res.ok) {
-                    const data = await res.json();
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('userId', data.user.id);
-                    localStorage.setItem('isAdmin', 'false');
-                    localStorage.setItem('userEmail', data.user.email);
-                    localStorage.setItem('userName', data.user.fullName || name);
-                    authSuccess = true;
+            const guestEmail = `guest_${Date.now()}_${Math.floor(Math.random() * 10000)}@thendral.quiz`;
+            const guestPass = 'Guest@Thendral123';
+
+            // Attempt backend registration up to 3 times to ensure user is saved in DB & dashboard
+            for (let attempt = 1; attempt <= 3 && !authSuccess; attempt++) {
+                try {
+                    // Try 1: Dedicated guest entry endpoint if available
+                    try {
+                        const guestRes = await fetch(`${API_BASE_URL}/api/auth/guest-entry`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ fullName: name })
+                        });
+                        if (guestRes.ok) {
+                            const data = await guestRes.json();
+                            if (data.token && data.user) {
+                                localStorage.setItem('token', data.token);
+                                localStorage.setItem('userId', data.user.id);
+                                localStorage.setItem('isAdmin', 'false');
+                                localStorage.setItem('userEmail', data.user.email);
+                                localStorage.setItem('userName', data.user.fullName || name);
+                                authSuccess = true;
+                                break;
+                            }
+                        }
+                    } catch (e1) {
+                        // ignore and try register
+                    }
+
+                    // Try 2: Standard register + login endpoint
+                    const regRes = await fetch(`${API_BASE_URL}/api/auth/register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            fullName: name,
+                            email: guestEmail,
+                            password: guestPass
+                        })
+                    });
+
+                    if (regRes.ok || regRes.status === 400) {
+                        const logRes = await fetch(`${API_BASE_URL}/api/auth/login`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                email: guestEmail,
+                                password: guestPass
+                            })
+                        });
+                        if (logRes.ok) {
+                            const logData = await logRes.json();
+                            if (logData.token && logData.user) {
+                                localStorage.setItem('token', logData.token);
+                                localStorage.setItem('userId', logData.user.id);
+                                localStorage.setItem('isAdmin', 'false');
+                                localStorage.setItem('userEmail', logData.user.email);
+                                localStorage.setItem('userName', logData.user.fullName || name);
+                                authSuccess = true;
+                                break;
+                            }
+                        }
+                    }
+                } catch (err) {
+                    console.warn(`Direct entry connection attempt ${attempt} note:`, err);
                 }
-            } catch (backendErr) {
-                console.warn('Backend guest entry note:', backendErr);
+
+                if (!authSuccess && attempt < 3) {
+                    await new Promise(r => setTimeout(r, 1200));
+                }
             }
 
-            if (!authSuccess) {
-                localStorage.setItem('token', 'guest-token-' + Date.now());
-                localStorage.setItem('userId', 'guest-' + Date.now());
-                localStorage.setItem('isAdmin', 'false');
-                localStorage.setItem('userEmail', 'guest@thendral.quiz');
-                localStorage.setItem('userName', name);
+            if (authSuccess) {
+                navigate('/instructions');
+            } else {
+                setGuestError('Connecting to server... Please check internet and click Start Exam again. (சர்வரோடு இணைய முடியவில்லை, மீண்டும் அழுத்தவும்)');
             }
-
-            navigate('/instructions');
         } catch (err) {
             console.error('Guest login error:', err);
             setGuestError('Could not start exam. Please try again.');
