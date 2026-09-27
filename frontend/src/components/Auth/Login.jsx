@@ -30,13 +30,37 @@ const Login = () => {
                 const res = await fetch(`${API_BASE_URL}/api/exam/status`);
                 if (res.ok) {
                     const data = await res.json();
+                    let al = true;
+                    if (data.allowLogin !== undefined) al = data.allowLogin !== false;
+                    else if (data.showAnswers && typeof data.showAnswers === 'object' && data.showAnswers.allowLogin !== undefined) {
+                        al = data.showAnswers.allowLogin !== false;
+                    } else if (localStorage.getItem('adminAllowLogin') !== null) {
+                        al = localStorage.getItem('adminAllowLogin') !== 'false';
+                    }
+
+                    let ar = true;
+                    if (data.allowRegister !== undefined) ar = data.allowRegister !== false;
+                    else if (data.showAnswers && typeof data.showAnswers === 'object' && data.showAnswers.allowRegister !== undefined) {
+                        ar = data.showAnswers.allowRegister !== false;
+                    } else if (localStorage.getItem('adminAllowRegister') !== null) {
+                        ar = localStorage.getItem('adminAllowRegister') !== 'false';
+                    }
+
                     setPortalSettings({
-                        allowLogin: data.allowLogin !== false,
-                        allowRegister: data.allowRegister !== false
+                        allowLogin: al,
+                        allowRegister: ar
                     });
                 }
             } catch (err) {
                 console.error('Error fetching portal settings:', err);
+                const localL = localStorage.getItem('adminAllowLogin');
+                const localR = localStorage.getItem('adminAllowRegister');
+                if (localL !== null || localR !== null) {
+                    setPortalSettings({
+                        allowLogin: localL !== 'false',
+                        allowRegister: localR !== 'false'
+                    });
+                }
             }
         };
         fetchStatus();

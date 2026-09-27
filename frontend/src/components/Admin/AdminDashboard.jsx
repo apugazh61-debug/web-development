@@ -57,10 +57,21 @@ const AdminDashboard = () => {
 
             setLeaderboard(resultsList);
             const ae = data.settings?.allowExam || false;
-            const sa = data.settings?.showAnswers || false;
+            const sa = typeof data.settings?.showAnswers === 'boolean'
+                ? data.settings.showAnswers
+                : !!data.settings?.showAnswers?.enabled;
             const sl = data.settings?.showLeaderboard || false;
-            const al = data.settings?.allowLogin !== false;
-            const ar = data.settings?.allowRegister !== false;
+
+            let al = true;
+            if (data.settings?.allowLogin !== undefined) al = data.settings.allowLogin !== false;
+            else if (data.settings?.showAnswers?.allowLogin !== undefined) al = data.settings.showAnswers.allowLogin !== false;
+            else if (localStorage.getItem('adminAllowLogin') !== null) al = localStorage.getItem('adminAllowLogin') !== 'false';
+
+            let ar = true;
+            if (data.settings?.allowRegister !== undefined) ar = data.settings.allowRegister !== false;
+            else if (data.settings?.showAnswers?.allowRegister !== undefined) ar = data.settings.showAnswers.allowRegister !== false;
+            else if (localStorage.getItem('adminAllowRegister') !== null) ar = localStorage.getItem('adminAllowRegister') !== 'false';
+
             setAllowExam(ae);
             setShowAnswers(sa);
             setShowLeaderboard(sl);
@@ -122,6 +133,9 @@ const AdminDashboard = () => {
     const handleToggleShowAnswers = async () => {
         try {
             const newValue = !showAnswers;
+            setShowAnswers(newValue);
+            localStorage.setItem('adminShowAnswers', newValue);
+
             const token = localStorage.getItem('token');
             const response = await fetch(`${API_BASE_URL}/toggle-exam`, {
                 method: 'POST',
@@ -129,14 +143,18 @@ const AdminDashboard = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ showAnswers: newValue })
+                body: JSON.stringify({
+                    showAnswers: {
+                        enabled: newValue,
+                        allowLogin: allowLogin,
+                        allowRegister: allowRegister
+                    }
+                })
             });
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to update show answers');
             }
-            setShowAnswers(newValue);
-            localStorage.setItem('adminShowAnswers', newValue);
         } catch (error) {
             console.error('Error toggling show answers:', error);
             alert('Failed to update: ' + error.message);
@@ -167,6 +185,9 @@ const AdminDashboard = () => {
     const handleToggleLogin = async () => {
         try {
             const newValue = !allowLogin;
+            setAllowLogin(newValue);
+            localStorage.setItem('adminAllowLogin', newValue);
+
             const token = localStorage.getItem('token');
             const response = await fetch(`${API_BASE_URL}/toggle-exam`, {
                 method: 'POST',
@@ -174,14 +195,19 @@ const AdminDashboard = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ allowLogin: newValue })
+                body: JSON.stringify({
+                    allowLogin: newValue,
+                    showAnswers: {
+                        enabled: showAnswers,
+                        allowLogin: newValue,
+                        allowRegister: allowRegister
+                    }
+                })
             });
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to update login access');
             }
-            setAllowLogin(newValue);
-            localStorage.setItem('adminAllowLogin', newValue);
         } catch (error) {
             console.error('Error toggling login access:', error);
             alert('Failed to update login access: ' + error.message);
@@ -191,6 +217,9 @@ const AdminDashboard = () => {
     const handleToggleRegister = async () => {
         try {
             const newValue = !allowRegister;
+            setAllowRegister(newValue);
+            localStorage.setItem('adminAllowRegister', newValue);
+
             const token = localStorage.getItem('token');
             const response = await fetch(`${API_BASE_URL}/toggle-exam`, {
                 method: 'POST',
@@ -198,14 +227,19 @@ const AdminDashboard = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ allowRegister: newValue })
+                body: JSON.stringify({
+                    allowRegister: newValue,
+                    showAnswers: {
+                        enabled: showAnswers,
+                        allowLogin: allowLogin,
+                        allowRegister: newValue
+                    }
+                })
             });
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Failed to update register access');
             }
-            setAllowRegister(newValue);
-            localStorage.setItem('adminAllowRegister', newValue);
         } catch (error) {
             console.error('Error toggling register access:', error);
             alert('Failed to update register access: ' + error.message);
