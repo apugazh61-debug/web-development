@@ -20,6 +20,8 @@ console.log('Using PORT:', PORT);
 const allowedOrigins = [
     'http://localhost:5173',
     'https://web-development-pugazhenthis-projects-a12f3df8.vercel.app',
+    'https://webwebst.in',
+    'https://www.webwebst.in',
     process.env.FRONTEND_URL
 ].filter(Boolean);
 
