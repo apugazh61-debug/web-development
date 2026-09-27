@@ -197,7 +197,7 @@ const Register = () => {
                 <div className="creator-credit-card">
                     <div className="credit-separator"></div>
                     <p className="credit-text-card">
-                        Website Sponsored By: Pugazhenthi, Karthikeyan
+                        Product By: Thendral Community
                     </p>
                 </div>
             </div>
