@@ -474,9 +474,9 @@ const AdminDashboard = () => {
                                                     <span className="participant-email">{result.email}</span>
                                                 </div>
                                             </td>
-                                            <td><span className="attend-badge">{(result.correctCount || 0) + (result.wrongCount || 0)} / 30</span></td>
+                                            <td><span className="attend-badge">{(result.correctCount || 0) + (result.wrongCount || 0)} / {result.answerDetails?.length || 100}</span></td>
                                             <td><span className="correct-badge">{result.correctCount || 0}</span></td>
-                                            <td><strong className="score-text">{result.totalScore} / 30</strong></td>
+                                            <td><strong className="score-text">{result.totalScore} / {result.answerDetails?.length || 100}</strong></td>
                                             <td>{Math.floor(result.timeTaken / 60)}m {result.timeTaken % 60}s</td>
                                         </tr>
                                     ))

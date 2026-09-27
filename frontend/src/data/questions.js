@@ -1,483 +1,1203 @@
 const questions = [
   {
     "id": 1,
-    "section": "Web Development",
-    "question": "What does HTML stand for?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'இன்பத்தமிழ்' பாடலை இயற்றியவர் யார்?",
     "options": [
-      "Hyper Text Markup Language",
-      "High Text Machine Language",
-      "Hyper Tabular Markup Language",
-      "Hyper Tool Multi Language"
+      "பாரதியார்",
+      "பாரதிதாசன்",
+      "நாமக்கல் கவிஞர்",
+      "கண்ணதாசன்"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "id": 2,
-    "section": "Web Development",
-    "question": "Which HTML tag is used to create a hyperlink?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'அசதி' என்னும் சொல்லின் பொருள் என்ன?",
     "options": [
-      "<link>",
-      "<a>",
-      "<href>",
-      "<url>"
+      "மகிழ்ச்சி",
+      "சோர்வு",
+      "கோபம்",
+      "வருத்தம்"
     ],
     "correctAnswer": 1
   },
   {
     "id": 3,
-    "section": "Web Development",
-    "question": "Which language is used for styling web pages?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'சமூகம்' என்னும் சொல்லின் பொருள் என்ன?",
     "options": [
-      "HTML",
-      "CSS",
-      "Python",
-      "SQL"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "id": 4,
-    "section": "Web Development",
-    "question": "Which HTML tag is used to display an image?",
-    "options": [
-      "<img>",
-      "<picture>",
-      "<src>",
-      "<image>"
+      "மக்கள் குழு",
+      "நாடு",
+      "ஊர்",
+      "வீடு"
     ],
     "correctAnswer": 0
   },
   {
-    "id": 5,
-    "section": "Web Development",
-    "question": "Which property is used to change text color in CSS?",
+    "id": 4,
+    "section": "தமிழ் (Tamil)",
+    "question": "ஒரே ஓசையில் அடிகள் முடிவது என்ன எனப்படும்?",
     "options": [
-      "font-color",
-      "text-color",
-      "color",
-      "background-color"
+      "எதுகைத் தொடை",
+      "மோனைத் தொடை",
+      "இயைபுத் தொடை",
+      "அந்தாதி"
     ],
     "correctAnswer": 2
+  },
+  {
+    "id": 5,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தொன்மை' என்னும் சொல்லின் பொருள் என்ன?",
+    "options": [
+      "புதுமை",
+      "பழமை",
+      "பெருமை",
+      "சீர்மை"
+    ],
+    "correctAnswer": 1
   },
   {
     "id": 6,
-    "section": "Web Development",
-    "question": "Which HTML tag is used for the largest heading?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'இடப்புறம்' என்னும் சொல்லைப் பிரித்தால் கிடைப்பது?",
     "options": [
-      "<h6>",
-      "<h1>",
-      "<heading>",
-      "<head>"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "id": 7,
-    "section": "Web Development",
-    "question": "Which CSS property controls text size?",
-    "options": [
-      "text-style",
-      "font-size",
-      "text-size",
-      "font-style"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "id": 8,
-    "section": "Web Development",
-    "question": "JavaScript is mainly used for?",
-    "options": [
-      "Database management",
-      "Styling web pages",
-      "Adding interactivity to web pages",
-      "Server hosting"
+      "இடன் + புறம்",
+      "இட + புறம்",
+      "இடம் + புறம்",
+      "இடப் + புறம்"
     ],
     "correctAnswer": 2
   },
   {
-    "id": 9,
-    "section": "Web Development",
-    "question": "Which HTML tag is used to create a table row?",
+    "id": 7,
+    "section": "தமிழ் (Tamil)",
+    "question": "தமிழ் இலக்கண வகைகள் எத்தனை?",
     "options": [
-      "<td>",
-      "<tr>",
-      "<th>",
-      "<row>"
+      "மூன்று",
+      "நான்கு",
+      "ஐந்து",
+      "ஆறு"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 8,
+    "section": "தமிழ் (Tamil)",
+    "question": "தமிழ் இலக்கண வகைகளுள் இல்லாதது எது?",
+    "options": [
+      "எழுத்து இலக்கணம்",
+      "சொல் இலக்கணம்",
+      "அணி இலக்கணம்",
+      "கவிதை இலக்கணம்"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 9,
+    "section": "தமிழ் (Tamil)",
+    "question": "உயிர் எழுத்துகளின் எண்ணிக்கை என்ன?",
+    "options": [
+      "10",
+      "12",
+      "18",
+      "216"
     ],
     "correctAnswer": 1
   },
   {
     "id": 10,
-    "section": "Web Development",
-    "question": "Which tag is used for inserting a line break?",
+    "section": "தமிழ் (Tamil)",
+    "question": "மெய் எழுத்துகளின் எண்ணிக்கை என்ன?",
     "options": [
-      "<break>",
-      "<br>",
-      "<lb>",
-      "<line>"
-    ],
-    "correctAnswer": 1
-  },
-  {
-    "id": 11,
-    "section": "Web Development",
-    "question": "Which CSS property is used to change background color?",
-    "options": [
-      "bgcolor",
-      "background",
-      "background-color",
-      "color-background"
+      "12",
+      "16",
+      "18",
+      "24"
     ],
     "correctAnswer": 2
   },
   {
-    "id": 12,
-    "section": "Web Development",
-    "question": "Which HTML element is used for an unordered list?",
+    "id": 11,
+    "section": "தமிழ் (Tamil)",
+    "question": "உயிர்மெய் எழுத்துகளின் மொத்த எண்ணிக்கை என்ன?",
     "options": [
-      "<ol>",
-      "<ul>",
-      "<li>",
-      "<list>"
+      "210",
+      "216",
+      "218",
+      "220"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 12,
+    "section": "தமிழ் (Tamil)",
+    "question": "குறில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "4",
+      "5",
+      "7",
+      "12"
     ],
     "correctAnswer": 1
   },
   {
     "id": 13,
-    "section": "Web Development",
-    "question": "Which tag is used to create a list item?",
+    "section": "தமிழ் (Tamil)",
+    "question": "நெடில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
-      "<li>",
-      "<ul>",
-      "<item>",
-      "<list>"
+      "5",
+      "6",
+      "7",
+      "8"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 2
   },
   {
     "id": 14,
-    "section": "Web Development",
-    "question": "Which attribute is used to specify an image source?",
+    "section": "தமிழ் (Tamil)",
+    "question": "குறில் எழுத்து ஒலிக்கும் கால அளவு என்ன?",
     "options": [
-      "link",
-      "src",
-      "href",
-      "alt"
+      "½ மாத்திரை",
+      "1 மாத்திரை",
+      "2 மாத்திரை",
+      "3 மாத்திரை"
     ],
     "correctAnswer": 1
   },
   {
     "id": 15,
-    "section": "Web Development",
-    "question": "Which HTML tag is used for inserting a video?",
+    "section": "தமிழ் (Tamil)",
+    "question": "நெடில் எழுத்து ஒலிக்கும் கால அளவு என்ன?",
     "options": [
-      "<media>",
-      "<video>",
-      "<movie>",
-      "<play>"
+      "½ மாத்திரை",
+      "1 மாத்திரை",
+      "2 மாத்திரை",
+      "3 மாத்திரை"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "id": 16,
-    "section": "Web Development",
-    "question": "Which symbol is used for ID selector in CSS?",
+    "section": "தமிழ் (Tamil)",
+    "question": "மெய் எழுத்துகளில் வன்மையாக ஒலிப்பவை எத்தனை?",
     "options": [
-      ".",
-      "#",
-      "*",
-      "&"
+      "5",
+      "6",
+      "7",
+      "8"
     ],
     "correctAnswer": 1
   },
   {
     "id": 17,
-    "section": "Web Development",
-    "question": "Which symbol is used for class selector in CSS?",
+    "section": "தமிழ் (Tamil)",
+    "question": "மெய் எழுத்துகளில் மென்மையாக ஒலிப்பவை எத்தனை?",
     "options": [
-      "#",
-      ".",
-      "*",
-      "$"
+      "5",
+      "6",
+      "7",
+      "8"
     ],
     "correctAnswer": 1
   },
   {
     "id": 18,
-    "section": "Web Development",
-    "question": "Which method is used to select an element by ID in JavaScript?",
+    "section": "தமிழ் (Tamil)",
+    "question": "மெய் எழுத்துகளில் இடைநிலையில் ஒலிப்பவை எத்தனை?",
     "options": [
-      "getElement()",
-      "getElementById()",
-      "selectById()",
-      "queryId()"
+      "5",
+      "6",
+      "7",
+      "8"
     ],
     "correctAnswer": 1
   },
   {
     "id": 19,
-    "section": "Web Development",
-    "question": "Which HTML tag is used to create a form?",
+    "section": "தமிழ் (Tamil)",
+    "question": "க் + அ என்பது எவ்வகை?",
     "options": [
-      "<input>",
-      "<form>",
-      "<submit>",
-      "<data>"
+      "உயிர்",
+      "மெய்",
+      "உயிர்மெய்க் குறில்",
+      "உயிர்மெய் நெடில்"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "id": 20,
-    "section": "Web Development",
-    "question": "Which input type is used for passwords?",
+    "section": "தமிழ் (Tamil)",
+    "question": "ம் + ஆ என்பது எவ்வகை?",
     "options": [
-      "text",
-      "password",
-      "pass",
-      "secure"
+      "உயிர்",
+      "மெய்",
+      "உயிர்மெய்க் குறில்",
+      "உயிர்மெய் நெடில்"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 3
   },
   {
     "id": 21,
-    "section": "Web Development",
-    "question": "Which HTTP method is used to send data securely?",
+    "section": "தமிழ் (Tamil)",
+    "question": "ஞ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
-      "GET",
-      "POST",
-      "FETCH",
-      "SEND"
+      "2",
+      "4",
+      "6",
+      "8"
     ],
     "correctAnswer": 1
   },
   {
     "id": 22,
-    "section": "Web Development",
-    "question": "Which language runs on the server side?",
+    "section": "தமிழ் (Tamil)",
+    "question": "ய வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
     "options": [
-      "HTML",
-      "CSS",
-      "PHP",
-      "XML"
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 23,
+    "section": "தமிழ் (Tamil)",
+    "question": "வ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
     ],
     "correctAnswer": 2
   },
   {
-    "id": 23,
-    "section": "Web Development",
-    "question": "Which HTML tag defines the document title?",
-    "options": [
-      "<title>",
-      "<meta>",
-      "<head>",
-      "<header>"
-    ],
-    "correctAnswer": 0
-  },
-  {
     "id": 24,
-    "section": "Web Development",
-    "question": "Which tag is used for JavaScript code?",
+    "section": "தமிழ் (Tamil)",
+    "question": "மொழிக்கு முதலில் ஒருபோதும் வராதவை எவை?",
     "options": [
-      "<javascript>",
-      "<script>",
-      "<js>",
-      "<code>"
+      "உயிர் எழுத்துகள்",
+      "மெய் எழுத்துகள் அனைத்தும்",
+      "உயிர்மெய் எழுத்துகள் சில",
+      "ஆய்தம் தவிர அனைத்தும்"
     ],
     "correctAnswer": 1
   },
   {
     "id": 25,
-    "section": "Web Development",
-    "question": "Which CSS property is used to make text bold?",
+    "section": "தமிழ் (Tamil)",
+    "question": "ட, ண, ர, ல, ழ, ள, ற, ன வரிசை உயிர்மெய் எழுத்துகள் சொல்லின் முதலில் எவ்வாறு வரும்?",
     "options": [
-      "text-bold",
-      "font-weight",
-      "text-style",
-      "bold"
+      "எப்போதும் வரும்",
+      "ஒருபோதும் வராது",
+      "சில நேரம் வரும்",
+      "ஒரு எழுத்து மட்டும் வரும்"
     ],
     "correctAnswer": 1
   },
   {
     "id": 26,
-    "section": "Web Development",
-    "question": "Which HTML element defines navigation links?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'கண்ணா வா!' என்பது எத்தொடர்?",
     "options": [
-      "<menu>",
-      "<nav>",
-      "<link>",
-      "<navigate>"
+      "எழுவாய்த் தொடர்",
+      "விளித் தொடர்",
+      "வினைமுற்றுத் தொடர்",
+      "வேற்றுமைத் தொடர்"
     ],
     "correctAnswer": 1
   },
   {
     "id": 27,
-    "section": "Web Development",
-    "question": "Which HTML tag is used to create a button?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'நன்று நன்று நன்று' – ஒரே சொல் பலமுறை அடுக்கி வருவது எத்தொடர்?",
     "options": [
-      "<btn>",
-      "<button>",
-      "<click>",
-      "<press>"
+      "உரிச்சொல் தொடர்",
+      "அடுக்குத் தொடர்",
+      "உவமைத் தொடர்",
+      "வினைமுற்றுத் தொடர்"
     ],
     "correctAnswer": 1
   },
   {
     "id": 28,
-    "section": "Web Development",
-    "question": "Which property is used for spacing inside elements?",
+    "section": "தமிழ் (Tamil)",
+    "question": "தொகாநிலைத் தொடர்கள் எத்தனை வகைப்படும்?",
     "options": [
-      "margin",
-      "padding",
-      "border",
-      "space"
+      "5",
+      "7",
+      "9",
+      "11"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "id": 29,
-    "section": "Web Development",
-    "question": "Which property controls space outside elements?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'சிக்கனம்' குறித்த பெரியாரின் கருத்துகள் எந்தப் பாடத்தில் இடம்பெறுகின்றன?",
     "options": [
-      "margin",
-      "padding",
-      "border",
-      "gap"
+      "பெரியாரின் சிந்தனைகள்",
+      "யசோதர காவியம்",
+      "மகனுக்கு எழுதிய கடிதம்",
+      "யாப்பிலக்கணம்"
     ],
     "correctAnswer": 0
   },
   {
     "id": 30,
-    "section": "Web Development",
-    "question": "Which HTML tag is used to define a paragraph?",
+    "section": "தமிழ் (Tamil)",
+    "question": "மூவசைச் சீரில் அமைந்த பெயருக்கு எடுத்துக்காட்டு எது?",
     "options": [
-      "<para>",
-      "<p>",
-      "<text>",
-      "<pg>"
+      "இராமன்",
+      "சீதாராமன்",
+      "கண்ணன்",
+      "குமரன்"
     ],
     "correctAnswer": 1
   },
   {
     "id": 31,
-    "section": "Web Development",
-    "question": "Which database is commonly used in web applications?",
+    "section": "தமிழ் (Tamil)",
+    "question": "ஒன்பதாம் வகுப்பு பாடநூலில் உள்ள இயல்களின் எண்ணிக்கை எத்தனை?",
     "options": [
-      "MySQL",
-      "Photoshop",
-      "Illustrator",
-      "Blender"
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 32,
+    "section": "தமிழ் (Tamil)",
+    "question": "ஒன்பதாம் வகுப்பு இயல் 1-ன் பொருண்மை என்ன?",
+    "options": [
+      "மொழி",
+      "இயற்கை, சுற்றுச்சூழல்",
+      "பண்பாடு, மனிதம்",
+      "கல்வி"
     ],
     "correctAnswer": 0
   },
   {
-    "id": 32,
-    "section": "Web Development",
-    "question": "Which protocol is used for secure websites?",
-    "options": [
-      "HTTP",
-      "HTTPS",
-      "FTP",
-      "SMTP"
-    ],
-    "correctAnswer": 1
-  },
-  {
     "id": 33,
-    "section": "Web Development",
-    "question": "Which HTML tag defines the footer section?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'மணற்கேணி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
-      "<bottom>",
-      "<footer>",
-      "<end>",
-      "<section>"
+      "இயல் 3",
+      "இயல் 4",
+      "இயல் 5",
+      "இயல் 6"
     ],
     "correctAnswer": 1
   },
   {
     "id": 34,
-    "section": "Web Development",
-    "question": "Which tag defines a section in HTML5?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'நிலா முற்றம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
-      "<div>",
-      "<section>",
-      "<part>",
-      "<content>"
+      "இயல் 4",
+      "இயல் 5",
+      "இயல் 6",
+      "இயல் 7"
     ],
     "correctAnswer": 1
   },
   {
     "id": 35,
-    "section": "Web Development",
-    "question": "Which CSS property is used to center text?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'விதை நெல்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
-      "text-align",
-      "align-text",
-      "text-position",
-      "center-text"
-    ],
-    "correctAnswer": 0
-  },
-  {
-    "id": 36,
-    "section": "Web Development",
-    "question": "Which JavaScript keyword declares a variable?",
-    "options": [
-      "int",
-      "var",
-      "define",
-      "create"
+      "இயல் 5",
+      "இயல் 6",
+      "இயல் 7",
+      "இயல் 4"
     ],
     "correctAnswer": 1
   },
   {
-    "id": 37,
-    "section": "Web Development",
-    "question": "Which tag is used for inserting audio?",
+    "id": 36,
+    "section": "தமிழ் (Tamil)",
+    "question": "'பெருவழி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
-      "<sound>",
-      "<audio>",
-      "<music>",
-      "<mp3>"
+      "இயல் 5",
+      "இயல் 6",
+      "இயல் 7",
+      "இயல் 4"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 37,
+    "section": "தமிழ் (Tamil)",
+    "question": "திருக்குறள் மொத்தம் எத்தனை அதிகாரங்களைக் கொண்டது?",
+    "options": [
+      "130",
+      "133",
+      "135",
+      "138"
     ],
     "correctAnswer": 1
   },
   {
     "id": 38,
-    "section": "Web Development",
-    "question": "Which attribute opens a link in a new tab?",
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்த்தேன்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
-      "new",
-      "open",
-      "target=\"_blank\"",
-      "link-new"
-    ],
-    "correctAnswer": 2
-  },
-  {
-    "id": 39,
-    "section": "Web Development",
-    "question": "Which CSS property changes font type?",
-    "options": [
-      "font-family",
-      "font-style",
-      "font-name",
-      "text-font"
+      "இயல் ஒன்று",
+      "இயல் இரண்டு",
+      "இயல் மூன்று",
+      "இயல் நான்கு"
     ],
     "correctAnswer": 0
   },
   {
-    "id": 40,
-    "section": "Web Development",
-    "question": "Which JavaScript function shows a popup message?",
+    "id": 39,
+    "section": "தமிழ் (Tamil)",
+    "question": "'இயற்கை இன்பம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
     "options": [
-      "msg()",
-      "popup()",
-      "alert()",
-      "show()"
+      "இயல் ஒன்று",
+      "இயல் இரண்டு",
+      "இயல் மூன்று",
+      "இயல் நான்கு"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 40,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாடநூலில் இலக்கணப் பகுதிக்குரிய தலைப்பு எது?",
+    "options": [
+      "உரைநடை உலகம்",
+      "கவிதைப் பேழை",
+      "விரிவானம்",
+      "கற்கண்டு"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 41,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாடநூலில் படக்கதை/நீட்டிக்கப்பட்ட உரைநடைக்குரிய தலைப்பு எது?",
+    "options": [
+      "உரைநடை உலகம்",
+      "கவிதைப் பேழை",
+      "விரிவானம்",
+      "கற்கண்டு"
     ],
     "correctAnswer": 2
+  },
+  {
+    "id": 42,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்மொழி வாழ்த்து' பாடலை இயற்றியவர் யார்?",
+    "options": [
+      "பாரதியார்",
+      "பாரதிதாசன்",
+      "கண்ணதாசன்",
+      "நாமக்கல் கவிஞர்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 43,
+    "section": "தமிழ் (Tamil)",
+    "question": "மக்கள் வாழும் நிலைப்பகுதியைக் குறிக்கும் சொல் எது?",
+    "options": [
+      "வைப்பு",
+      "வழி",
+      "நிலம்",
+      "நாடு"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 44,
+    "section": "தமிழ் (Tamil)",
+    "question": "'என்றென்றும்' என்னும் சொல்லைப் பிரித்தால் கிடைப்பது?",
+    "options": [
+      "என்று + என்றும்",
+      "என் + றென்றும்",
+      "என்ற + என்றும்",
+      "என்று + என்று"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 45,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்மொழி வாழ்த்து' பாடலை இயற்றியவர் யார்?",
+    "options": [
+      "பாரதியார்",
+      "பாரதிதாசன்",
+      "நாமக்கல் கவிஞர்",
+      "கபிலர்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 46,
+    "section": "தமிழ் (Tamil)",
+    "question": "'எங்கள் தமிழ்' பாடலை இயற்றியவர் யார்?",
+    "options": [
+      "பாரதியார்",
+      "நாமக்கல் கவிஞர்",
+      "பாரதிதாசன்",
+      "கண்ணதாசன்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 47,
+    "section": "தமிழ் (Tamil)",
+    "question": "'நெறி' என்பதன் பொருள் என்ன?",
+    "options": [
+      "வழி",
+      "நிலம்",
+      "நீர்",
+      "உணவு"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 48,
+    "section": "தமிழ் (Tamil)",
+    "question": "'குரலாகும்' என்னும் சொல்லைப் பிரித்தால்?",
+    "options": [
+      "குரல் + ஆகும்",
+      "குர + லாகும்",
+      "குரல் + ஆக்கும்",
+      "குர + ஆகும்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 49,
+    "section": "தமிழ் (Tamil)",
+    "question": "'வான் + ஒலி' என்பதன் சேர்க்கை என்ன?",
+    "options": [
+      "வானொலி",
+      "வானோலி",
+      "வான்ஒலி",
+      "வானொளி"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 50,
+    "section": "தமிழ் (Tamil)",
+    "question": "'அசை' எத்தனை வகைப்படும்?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 51,
+    "section": "தமிழ் (Tamil)",
+    "question": "'விடும்' என்பது எவ்வகை அசை?",
+    "options": [
+      "நேரசை",
+      "நிரையசை",
+      "நேர்பு",
+      "நிரைபு"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 52,
+    "section": "தமிழ் (Tamil)",
+    "question": "அடி எத்தனை வகைப்படும்?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 53,
+    "section": "தமிழ் (Tamil)",
+    "question": "முதல் எழுத்து ஒன்றி வரத் தொடுப்பது எது?",
+    "options": [
+      "எதுகை",
+      "மோனை",
+      "இயைபு",
+      "முரண்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 54,
+    "section": "தமிழ் (Tamil)",
+    "question": "வெண்பாவின் ஓசை என்ன?",
+    "options": [
+      "அகவலோசை",
+      "செப்பலோசை",
+      "தூங்கலோசை",
+      "துள்ளலோசை"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 55,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்விடு தூது' என்பது எவ்வகை இலக்கியம்?",
+    "options": [
+      "காப்பியம்",
+      "சிற்றிலக்கியம்",
+      "புதினம்",
+      "நாடகம்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 56,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்விடு தூது' முதன்முதலில் பதிப்பித்தவர் யார்?",
+    "options": [
+      "உ.வே. சாமிநாதையர்",
+      "பாரதியார்",
+      "பாரதிதாசன்",
+      "நாமக்கல் கவிஞர்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 57,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்விடு தூது' எத்தனை கண்ணிகளைக் கொண்டது?",
+    "options": [
+      "168",
+      "200",
+      "268",
+      "368"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 58,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்விடு தூது' நூலின் ஆசிரியர் யார்?",
+    "options": [
+      "உ.வே. சாமிநாதையர்",
+      "ஆசிரியர் தெரியாது",
+      "பாரதியார்",
+      "கபிலர்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 59,
+    "section": "தமிழ் (Tamil)",
+    "question": "திருக்குறள் மொத்தம் எத்தனை அதிகாரங்களைக் கொண்டது?",
+    "options": [
+      "130",
+      "133",
+      "135",
+      "138"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 60,
+    "section": "தமிழ் (Tamil)",
+    "question": "கபிலர் என்னும் சொல்லின் மாத்திரை அளவு என்ன?",
+    "options": [
+      "1+1+1+½ = 3½",
+      "1+2+1 = 4",
+      "½+½+½ = 1½",
+      "2+2 = 4"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 61,
+    "section": "தமிழ் (Tamil)",
+    "question": "பத்தாம் வகுப்பு பாடநூலில் உள்ள இயல்களின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 62,
+    "section": "தமிழ் (Tamil)",
+    "question": "இயல் 1-ன் பொருண்மை என்ன?",
+    "options": [
+      "மொழி, மனிதம்",
+      "இயற்கை, அறிவியல்",
+      "பண்பாடு",
+      "கல்வி"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 63,
+    "section": "தமிழ் (Tamil)",
+    "question": "இயல் 2-ன் பொருண்மை என்ன?",
+    "options": [
+      "மொழி, மனிதம்",
+      "இயற்கை, சுற்றுச்சூழல், அறிவியல்",
+      "பண்பாடு",
+      "கல்வி"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 64,
+    "section": "தமிழ் (Tamil)",
+    "question": "இயல் 3-ன் பொருண்மை என்ன?",
+    "options": [
+      "இயற்கை, அறிவியல்",
+      "பண்பாடு",
+      "கல்வி",
+      "கலை, அழகியல்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 65,
+    "section": "தமிழ் (Tamil)",
+    "question": "இயல் 4-ன் பொருண்மை என்ன?",
+    "options": [
+      "பண்பாடு",
+      "கல்வி",
+      "கலை, அழகியல், புதுமை",
+      "நாகரிகம், நாடு, சமூகம்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 66,
+    "section": "தமிழ் (Tamil)",
+    "question": "'இந்தியாவின் பறவை மனிதர்' என்று அழைக்கப்படுபவர் யார்?",
+    "options": [
+      "சாலிம் அலி",
+      "அப்துல் கலாம்",
+      "நெஹ்ரு",
+      "பெரியார்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 67,
+    "section": "தமிழ் (Tamil)",
+    "question": "Ornithology என்பது எதைப் பற்றிய படிப்பு?",
+    "options": [
+      "விலங்குகள்",
+      "பறவைகள்",
+      "தாவரங்கள்",
+      "மீன்கள்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 68,
+    "section": "தமிழ் (Tamil)",
+    "question": "உலகச் சிட்டுக்குருவிகள் நாள் எப்போது?",
+    "options": [
+      "மார்ச் 20",
+      "ஏப்ரல் 20",
+      "ஜூன் 5",
+      "மே 20"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 69,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தட்பவெப்பம்' என்னும் சொல்லைப் பிரித்தால்?",
+    "options": [
+      "தட்ப + வெப்பம்",
+      "தட + பவெப்பம்",
+      "தட்பவ + வெப்பம்",
+      "தட்பம் + வெப்பம்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 70,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாவாணர் இயக்குநராகப் பணியாற்றிய திட்டம் எது?",
+    "options": [
+      "செந்தமிழ்ச் சொற்பிறப்பியல் அகரமுதலித் திட்டம்",
+      "தமிழ் வளர்ச்சித் திட்டம்",
+      "இலவசக் கல்வித் திட்டம்",
+      "நூலகத் திட்டம்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 71,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாவாணர் நிறுவித் தலைவராக இருந்த அமைப்பு எது?",
+    "options": [
+      "உலகத் தமிழ்க் கழகம்",
+      "தமிழ்ப் பல்கலைக்கழகம்",
+      "சாகித்திய அகாதெமி",
+      "தமிழ் வளர்ச்சித் துறை"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 72,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாவாணரின் 'சொல்லாய்வுக் கட்டுரைகள்' நூலில் உள்ள பாடம் எது?",
+    "options": [
+      "தமிழ்ச்சொல் வளம்",
+      "இலக்கண ஆய்வு",
+      "மொழி வரலாறு",
+      "தமிழ் இலக்கியம்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 73,
+    "section": "தமிழ் (Tamil)",
+    "question": "'சிக்கனம்' குறித்த பெரியாரின் கருத்துகள் எந்தப் பாடத்தில் இடம்பெறுகின்றன?",
+    "options": [
+      "பெரியாரின் சிந்தனைகள்",
+      "யசோதர காவியம்",
+      "மகனுக்கு எழுதிய கடிதம்",
+      "யாப்பிலக்கணம்"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 74,
+    "section": "தமிழ் (Tamil)",
+    "question": "மூவசைச் சீரில் அமைந்த பெயருக்கு எடுத்துக்காட்டு எது?",
+    "options": [
+      "இராமன்",
+      "சீதாராமன்",
+      "கண்ணன்",
+      "குமரன்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 75,
+    "section": "தமிழ் (Tamil)",
+    "question": "'மணற்கேணி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
+    "options": [
+      "இயல் 3",
+      "இயல் 4",
+      "இயல் 5",
+      "இயல் 6"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 76,
+    "section": "தமிழ் (Tamil)",
+    "question": "'நிலா முற்றம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
+    "options": [
+      "இயல் 4",
+      "இயல் 5",
+      "இயல் 6",
+      "இயல் 7"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 77,
+    "section": "தமிழ் (Tamil)",
+    "question": "'விதை நெல்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
+    "options": [
+      "இயல் 5",
+      "இயல் 6",
+      "இயல் 7",
+      "இயல் 4"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 78,
+    "section": "தமிழ் (Tamil)",
+    "question": "'பெருவழி' என்பது எந்த இயலின் துணைத்தலைப்பு?",
+    "options": [
+      "இயல் 5",
+      "இயல் 6",
+      "இயல் 7",
+      "இயல் 4"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 79,
+    "section": "தமிழ் (Tamil)",
+    "question": "'தமிழ்த்தேன்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
+    "options": [
+      "இயல் ஒன்று",
+      "இயல் இரண்டு",
+      "இயல் மூன்று",
+      "இயல் நான்கு"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 80,
+    "section": "தமிழ் (Tamil)",
+    "question": "'இயற்கை இன்பம்' என்பது எந்த இயலின் துணைத்தலைப்பு?",
+    "options": [
+      "இயல் ஒன்று",
+      "இயல் இரண்டு",
+      "இயல் மூன்று",
+      "இயல் நான்கு"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 81,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாடநூலில் இலக்கணப் பகுதிக்குரிய தலைப்பு எது?",
+    "options": [
+      "உரைநடை உலகம்",
+      "கவிதைப் பேழை",
+      "விரிவானம்",
+      "கற்கண்டு"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 82,
+    "section": "தமிழ் (Tamil)",
+    "question": "பாடநூலில் படக்கதை/நீட்டிக்கப்பட்ட உரைநடைக்குரிய தலைப்பு எது?",
+    "options": [
+      "உரைநடை உலகம்",
+      "கவிதைப் பேழை",
+      "விரிவானம்",
+      "கற்கண்டு"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 83,
+    "section": "தமிழ் (Tamil)",
+    "question": "ஞ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 84,
+    "section": "தமிழ் (Tamil)",
+    "question": "ய வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 85,
+    "section": "தமிழ் (Tamil)",
+    "question": "வ வரிசையில் மொழிக்கு முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 86,
+    "section": "தமிழ் (Tamil)",
+    "question": "மொழிக்கு முதலில் ஒருபோதும் வராதவை எவை?",
+    "options": [
+      "உயிர் எழுத்துகள்",
+      "மெய் எழுத்துகள் அனைத்தும்",
+      "உயிர்மெய் எழுத்துகள் சில",
+      "ஆய்தம் தவிர அனைத்தும்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 87,
+    "section": "தமிழ் (Tamil)",
+    "question": "ட, ண, ர, ல, ழ, ள, ற, ன வரிசை உயிர்மெய் எழுத்துகள் சொல்லின் முதலில் எவ்வாறு வரும்?",
+    "options": [
+      "எப்போதும் வரும்",
+      "ஒருபோதும் வராது",
+      "சில நேரம் வரும்",
+      "ஒரு எழுத்து மட்டும் வரும்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 88,
+    "section": "தமிழ் (Tamil)",
+    "question": "'சாலைவும் நன்று' என்பதில் 'சாலை' எனும் உரிச்சொல் வெளிப்படையாக வந்துள்ளதால் இது என்ன தொடர்?",
+    "options": [
+      "அடுக்குத்தொடர்",
+      "உரிச்சொல் தொடர்",
+      "உவமைத்தொடர்",
+      "வேற்றுமைத்தொடர்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 89,
+    "section": "தமிழ் (Tamil)",
+    "question": "'கண்ணா வா!' என்பது எத்தொடர்?",
+    "options": [
+      "எழுவாய்த் தொடர்",
+      "விளித் தொடர்",
+      "வினைமுற்றுத் தொடர்",
+      "வேற்றுமைத் தொடர்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 90,
+    "section": "தமிழ் (Tamil)",
+    "question": "'நன்று நன்று நன்று' – ஒரே சொல் பலமுறை அடுக்கி வருவது எத்தொடர்?",
+    "options": [
+      "உரிச்சொல் தொடர்",
+      "அடுக்குத்தொடர்",
+      "உவமைத்தொடர்",
+      "வினைமுற்றுத்தொடர்"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 91,
+    "section": "தமிழ் (Tamil)",
+    "question": "தொகாநிலைத் தொடர்கள் எத்தனை வகைப்படும்?",
+    "options": [
+      "5",
+      "7",
+      "9",
+      "11"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 92,
+    "section": "தமிழ் (Tamil)",
+    "question": "தமிழ் இலக்கண வகைகள் எத்தனை?",
+    "options": [
+      "மூன்று",
+      "நான்கு",
+      "ஐந்து",
+      "ஆறு"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 93,
+    "section": "தமிழ் (Tamil)",
+    "question": "உயிர் எழுத்துகளின் எண்ணிக்கை என்ன?",
+    "options": [
+      "10",
+      "12",
+      "18",
+      "216"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 94,
+    "section": "தமிழ் (Tamil)",
+    "question": "மெய் எழுத்துகளின் எண்ணிக்கை என்ன?",
+    "options": [
+      "12",
+      "16",
+      "18",
+      "24"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 95,
+    "section": "தமிழ் (Tamil)",
+    "question": "உயிர்மெய் எழுத்துகளின் மொத்த எண்ணிக்கை என்ன?",
+    "options": [
+      "210",
+      "216",
+      "218",
+      "220"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 96,
+    "section": "தமிழ் (Tamil)",
+    "question": "குறில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "4",
+      "5",
+      "7",
+      "12"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 97,
+    "section": "தமிழ் (Tamil)",
+    "question": "நெடில் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 98,
+    "section": "தமிழ் (Tamil)",
+    "question": "க் + அ என்பது எவ்வகை?",
+    "options": [
+      "உயிர்",
+      "மெய்",
+      "உயிர்மெய்க் குறில்",
+      "உயிர்மெய் நெடில்"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 99,
+    "section": "தமிழ் (Tamil)",
+    "question": "ம் + ஆ என்பது எவ்வகை?",
+    "options": [
+      "உயிர்",
+      "மெய்",
+      "உயிர்மெய்க் குறில்",
+      "உயிர்மெய் நெடில்"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 100,
+    "section": "தமிழ் (Tamil)",
+    "question": "கபிலர் என்னும் சொல்லின் மாத்திரை அளவு என்ன?",
+    "options": [
+      "1+1+1+½ = 3½",
+      "1+2+1 = 4",
+      "½+½+½ = 1½",
+      "2+2 = 4"
+    ],
+    "correctAnswer": 0
   }
 ];
 

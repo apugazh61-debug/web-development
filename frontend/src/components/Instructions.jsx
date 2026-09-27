@@ -59,23 +59,16 @@ const Instructions = () => {
                     <div className="instruction-section">
                         <h3>📊 Test Structure</h3>
                         <ul>
-                            <li>This test contains <strong>60 multiple-choice questions</strong></li>
-                            <li>Total duration of the exam is <strong>30 minutes</strong></li>
-                            <li>The test covers <strong>Technical Fundamentals</strong>:
-                                <ul className="subsection">
-                                    <li>Data Structures & Algorithms</li>
-                                    <li>Operating Systems & DBMS</li>
-                                    <li>Programming Languages (Python, Java, C)</li>
-                                    <li>Networking & Security</li>
-                                </ul>
-                            </li>
+                            <li>This test contains <strong>100 multiple-choice questions (100 முக்கிய MCQ வினாக்கள்)</strong></li>
+                            <li>Total duration of the exam is <strong>60 minutes</strong></li>
+                            <li>The test covers <strong>TNPSC GROUP 4 பொதுத் தமிழ் (General Tamil)</strong></li>
                         </ul>
                     </div>
 
                     <div className="instruction-section">
                         <h3>📝 Answering Questions</h3>
                         <ul>
-                            <li>Each question has <strong>four options</strong>, only one is correct</li>
+                            <li>Each question has <strong>four options (அ, ஆ, இ, ஈ)</strong>, only one is correct</li>
                             <li><strong>No negative marking</strong> - unanswered questions will not affect your score</li>
                             <li>You can navigate between questions using Next/Previous buttons</li>
                             <li>Attempted questions will be highlighted for easy tracking</li>
@@ -107,7 +100,7 @@ const Instructions = () => {
                     <div className="instruction-section">
                         <h3>📈 Results</h3>
                         <ul>
-                            <li>After submission, you will see your total score out of 30</li>
+                            <li>After submission, you will see your total score out of 100</li>
                             <li>Section-wise scores will be displayed</li>
                             <li>Time taken will be shown</li>
                         </ul>

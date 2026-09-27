@@ -3,21 +3,34 @@ const router = express.Router();
 const { query } = require('../config/db');
 const verifyToken = require('../middleware/auth');
 
+const defaultQuestions = require('../data/questions');
+
 // Get all questions
 router.get('/questions', verifyToken, async (req, res) => {
     try {
-        // Only return questions if exam is allowed
-        const settingsRes = await query("SELECT value FROM settings WHERE key = 'general'");
-        const settings = settingsRes.rows[0]?.value || { allowExam: false };
+        let result = await query('SELECT id, section, question_text as question, options, correct_answer as "correctAnswer" FROM questions ORDER BY id ASC');
 
-        // For now, allow fetching if token is valid, 
-        // but frontend will check settings too.
-        
-        const result = await query('SELECT id, section, question_text as question, options, correct_answer as "correctAnswer" FROM questions');
-        res.json({ questions: result.rows || [] });
+        // If DB has 0 questions or old 30/40 questions, auto-sync with the 100 TNPSC Tamil questions
+        if (!result.rows || result.rows.length === 0 || (result.rows.length < 50 && result.rows[0]?.section === 'Aptitude')) {
+            try {
+                await query('DELETE FROM questions');
+                for (const q of defaultQuestions) {
+                    await query(
+                        'INSERT INTO questions (section, question_text, options, correct_answer) VALUES ($1, $2, $3, $4)',
+                        [q.section, q.question, JSON.stringify(q.options), q.correctAnswer]
+                    );
+                }
+                result = await query('SELECT id, section, question_text as question, options, correct_answer as "correctAnswer" FROM questions ORDER BY id ASC');
+            } catch (syncErr) {
+                console.error('Error auto-syncing questions to DB:', syncErr);
+                return res.json({ questions: defaultQuestions });
+            }
+        }
+
+        res.json({ questions: result.rows || defaultQuestions });
     } catch (error) {
         console.error('Fetch questions error:', error);
-        res.status(500).json({ error: 'Failed to fetch questions' });
+        res.json({ questions: defaultQuestions });
     }
 });
 
