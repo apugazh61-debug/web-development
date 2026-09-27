@@ -1,10 +1,15 @@
-import { Navigate } from 'react-router-dom';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import AdminLogin from '../components/Admin/AdminLogin';
 
 const AdminRoute = ({ children }) => {
-    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    const [isAdmin, setIsAdmin] = useState(() => localStorage.getItem('isAdmin') === 'true');
 
-    return isAdmin ? children : <Navigate to="/login" replace />;
+    if (!isAdmin) {
+        return <AdminLogin onLoginSuccess={() => setIsAdmin(true)} />;
+    }
+
+    return children;
 };
 
 AdminRoute.propTypes = {

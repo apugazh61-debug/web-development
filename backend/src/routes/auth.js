@@ -42,8 +42,8 @@ router.post('/register', async (req, res) => {
 // Login user
 router.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const loginIdentifier = String(email || '').trim();
+        const { id, email, password } = req.body;
+        const loginIdentifier = String(id || email || '').trim();
         const loginPassword = String(password || '');
 
         // Master Admin Credentials: ID "1", Password "1"
