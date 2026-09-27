@@ -164,15 +164,15 @@ const Login = () => {
 
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
-                                    <label htmlFor="email">Email</label>
+                                    <label htmlFor="email">Email / ID</label>
                                     <input
-                                        type="email"
+                                        type="text"
                                         id="email"
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        placeholder="Enter your email"
-                                        autoComplete="email"
+                                        placeholder="Enter email or Admin ID (1)"
+                                        autoComplete="username"
                                     />
                                 </div>
 

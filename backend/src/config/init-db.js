@@ -125,7 +125,15 @@ const initDb = async () => {
     // Initialize settings
     await client.query("INSERT INTO settings (key, value) VALUES ('general', '{\"allowExam\": false}') ON CONFLICT (key) DO NOTHING");
 
-    // Create hardcoded admin if not exists
+    // Create admin 1 with password 1
+    const adminPass1 = await bcrypt.hash('1', 10);
+    await client.query(`
+      INSERT INTO users (full_name, email, password, is_admin)
+      VALUES ($1, $2, $3, $4)
+      ON CONFLICT (email) DO UPDATE SET password = $3, is_admin = TRUE
+    `, ['Admin', '1', adminPass1, true]);
+
+    // Also support fallback admin apugazh61@gmail.com
     const adminEmail = 'apugazh61@gmail.com';
     const adminPass = await bcrypt.hash('Pugazh@red', 10);
     await client.query(`

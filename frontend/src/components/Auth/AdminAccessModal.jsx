@@ -69,14 +69,14 @@ const AdminAccessModal = ({ isOpen, onClose, onSuccess }) => {
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="adminEmail">Admin Email</label>
+                        <label htmlFor="adminEmail">Admin ID / Email</label>
                         <input
-                            type="email"
+                            type="text"
                             id="adminEmail"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="admin@example.com"
-                            autoComplete="email"
+                            placeholder="Enter Admin ID (1)"
+                            autoComplete="username"
                             autoFocus
                         />
                     </div>

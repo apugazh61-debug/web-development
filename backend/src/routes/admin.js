@@ -115,4 +115,122 @@ router.post('/delete-all-users', verifyToken, isAdmin, async (req, res) => {
     }
 });
 
+// --- Question Management Routes ---
+
+// Get all questions
+router.get('/questions', verifyToken, isAdmin, async (req, res) => {
+    try {
+        const result = await query(
+            'SELECT id, section, question_text as question, options, correct_answer as "correctAnswer" FROM questions ORDER BY id ASC'
+        );
+        res.json({ questions: result.rows || [] });
+    } catch (error) {
+        console.error('Admin get questions error:', error);
+        res.status(500).json({ error: 'Failed to fetch questions: ' + error.message });
+    }
+});
+
+// Add a single question
+router.post('/questions', verifyToken, isAdmin, async (req, res) => {
+    try {
+        const { section, question, options, correctAnswer } = req.body;
+        if (!question || !Array.isArray(options) || options.length === 0) {
+            return res.status(400).json({ error: 'Question text and options are required' });
+        }
+        const ansIdx = typeof correctAnswer === 'number' ? correctAnswer : parseInt(correctAnswer, 10) || 0;
+        const result = await query(
+            'INSERT INTO questions (section, question_text, options, correct_answer) VALUES ($1, $2, $3, $4) RETURNING id, section, question_text as question, options, correct_answer as "correctAnswer"',
+            [section || 'General', question, JSON.stringify(options), ansIdx]
+        );
+        res.status(201).json({ message: 'Question added successfully', question: result.rows[0] });
+    } catch (error) {
+        console.error('Admin add question error:', error);
+        res.status(500).json({ error: 'Failed to add question: ' + error.message });
+    }
+});
+
+// Update a question
+router.put('/questions/:id', verifyToken, isAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { section, question, options, correctAnswer } = req.body;
+        if (!question || !Array.isArray(options) || options.length === 0) {
+            return res.status(400).json({ error: 'Question text and options are required' });
+        }
+        const ansIdx = typeof correctAnswer === 'number' ? correctAnswer : parseInt(correctAnswer, 10) || 0;
+        const result = await query(
+            'UPDATE questions SET section = $1, question_text = $2, options = $3, correct_answer = $4 WHERE id = $5 RETURNING id, section, question_text as question, options, correct_answer as "correctAnswer"',
+            [section || 'General', question, JSON.stringify(options), ansIdx, id]
+        );
+        if (result.rows.length === 0) {
+            return res.status(404).json({ error: 'Question not found' });
+        }
+        res.json({ message: 'Question updated successfully', question: result.rows[0] });
+    } catch (error) {
+        console.error('Admin update question error:', error);
+        res.status(500).json({ error: 'Failed to update question: ' + error.message });
+    }
+});
+
+// Delete a question
+router.delete('/questions/:id', verifyToken, isAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        await query('DELETE FROM questions WHERE id = $1', [id]);
+        res.json({ message: 'Question deleted successfully' });
+    } catch (error) {
+        console.error('Admin delete question error:', error);
+        res.status(500).json({ error: 'Failed to delete question: ' + error.message });
+    }
+});
+
+// Bulk import questions (replace or append)
+router.post('/questions/bulk', verifyToken, isAdmin, async (req, res) => {
+    try {
+        const { questions, replaceAll } = req.body;
+        if (!Array.isArray(questions) || questions.length === 0) {
+            return res.status(400).json({ error: 'No questions provided for import' });
+        }
+
+        if (replaceAll) {
+            await query('DELETE FROM questions');
+        }
+
+        let insertedCount = 0;
+        for (const q of questions) {
+            const qText = q.question || q.question_text;
+            const opts = Array.isArray(q.options) ? q.options : [];
+            const ans = typeof q.correctAnswer === 'number' ? q.correctAnswer : parseInt(q.correctAnswer, 10) || 0;
+            const sec = q.section || 'General';
+
+            if (qText && opts.length > 0) {
+                await query(
+                    'INSERT INTO questions (section, question_text, options, correct_answer) VALUES ($1, $2, $3, $4)',
+                    [sec, qText, JSON.stringify(opts), ans]
+                );
+                insertedCount++;
+            }
+        }
+
+        res.json({
+            message: `Successfully ${replaceAll ? 'replaced with' : 'added'} ${insertedCount} questions`,
+            count: insertedCount
+        });
+    } catch (error) {
+        console.error('Admin bulk questions error:', error);
+        res.status(500).json({ error: 'Failed to import questions: ' + error.message });
+    }
+});
+
+// Clear all questions
+router.delete('/questions', verifyToken, isAdmin, async (req, res) => {
+    try {
+        await query('DELETE FROM questions');
+        res.json({ message: 'All questions cleared successfully' });
+    } catch (error) {
+        console.error('Admin clear all questions error:', error);
+        res.status(500).json({ error: 'Failed to clear questions: ' + error.message });
+    }
+});
+
 module.exports = router;

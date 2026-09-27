@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import QuestionManager from './QuestionManager';
 import './AdminDashboard.css';
 import API_BASE_URL_CENTRAL from '../../config';
 
@@ -489,6 +490,9 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Question Management System */}
+            <QuestionManager />
         </div>
     );
 };
