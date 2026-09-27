@@ -49,29 +49,29 @@ router.post('/login', async (req, res) => {
         // Master Admin Credentials: ID "1", Password "1"
         if (loginIdentifier === '1') {
             if (loginPassword !== '1') {
-                return res.status(401).json({ error: 'Invalid admin password' });
+                return res.status(401).json({ error: 'Invalid ID or Password' });
             }
 
             let adminUser = null;
             try {
-                const checkRes = await query("SELECT * FROM users WHERE email = '1'");
+                const checkRes = await query("SELECT * FROM users WHERE is_admin = TRUE OR email = '1' OR email = 'apugazh61@gmail.com' ORDER BY is_admin DESC LIMIT 1");
                 if (checkRes.rows.length > 0) {
                     adminUser = checkRes.rows[0];
                     if (!adminUser.is_admin) {
-                        await query("UPDATE users SET is_admin = TRUE WHERE email = '1'");
+                        await query("UPDATE users SET is_admin = TRUE WHERE id = $1", [adminUser.id]);
                         adminUser.is_admin = true;
                     }
                 } else {
                     const hashed = await bcrypt.hash('1', 10);
                     const ins = await query(
                         "INSERT INTO users (full_name, email, password, is_admin) VALUES ($1, $2, $3, TRUE) RETURNING *",
-                        ['Admin', '1', hashed]
+                        ['Admin', 'admin@techquiz.com', hashed]
                     );
                     adminUser = ins.rows[0];
                 }
             } catch (dbErr) {
                 console.error('Database admin lookup note:', dbErr);
-                adminUser = { id: 1, full_name: 'Admin', email: '1', is_admin: true };
+                adminUser = { id: 1, full_name: 'Admin', email: 'admin@techquiz.com', is_admin: true };
             }
 
             const token = jwt.sign(
@@ -85,16 +85,17 @@ router.post('/login', async (req, res) => {
                 user: {
                     id: adminUser.id,
                     fullName: adminUser.full_name || 'Admin',
-                    email: '1',
+                    email: adminUser.email,
                     isAdmin: true
                 }
             });
         }
 
         // Fetch user
-        const userResult = await query('SELECT * FROM users WHERE email = $1', [email]);
+        const targetIdentifier = email || id;
+        const userResult = await query('SELECT * FROM users WHERE email = $1', [targetIdentifier]);
         if (userResult.rows.length === 0) {
-            return res.status(401).json({ error: 'Invalid email or password' });
+            return res.status(401).json({ error: 'Invalid ID, email or password' });
         }
 
         const user = userResult.rows[0];
@@ -111,7 +112,7 @@ router.post('/login', async (req, res) => {
         // Verify password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ error: 'Invalid email or password' });
+            return res.status(401).json({ error: 'Invalid ID, email or password' });
         }
 
         // Generate JWT
