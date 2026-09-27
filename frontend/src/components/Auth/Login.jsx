@@ -20,6 +20,9 @@ const Login = () => {
         allowRegister: true
     });
     const [showAdminModal, setShowAdminModal] = useState(false);
+    const [guestName, setGuestName] = useState('');
+    const [guestLoading, setGuestLoading] = useState(false);
+    const [guestError, setGuestError] = useState('');
 
     useEffect(() => {
         const fetchStatus = async () => {
@@ -51,6 +54,55 @@ const Login = () => {
             navigate('/admin');
         } else {
             setShowAdminModal(true);
+        }
+    };
+
+    const handleGuestSubmit = async (e) => {
+        e.preventDefault();
+        const name = guestName.trim();
+        if (!name) {
+            setGuestError('Please enter your Name / பெயரை உள்ளிடவும்');
+            return;
+        }
+
+        setGuestLoading(true);
+        setGuestError('');
+
+        try {
+            let authSuccess = false;
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/auth/guest-entry`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fullName: name })
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('userId', data.user.id);
+                    localStorage.setItem('isAdmin', 'false');
+                    localStorage.setItem('userEmail', data.user.email);
+                    localStorage.setItem('userName', data.user.fullName || name);
+                    authSuccess = true;
+                }
+            } catch (backendErr) {
+                console.warn('Backend guest entry note:', backendErr);
+            }
+
+            if (!authSuccess) {
+                localStorage.setItem('token', 'guest-token-' + Date.now());
+                localStorage.setItem('userId', 'guest-' + Date.now());
+                localStorage.setItem('isAdmin', 'false');
+                localStorage.setItem('userEmail', 'guest@thendral.quiz');
+                localStorage.setItem('userName', name);
+            }
+
+            navigate('/instructions');
+        } catch (err) {
+            console.error('Guest login error:', err);
+            setGuestError('Could not start exam. Please try again.');
+        } finally {
+            setGuestLoading(false);
         }
     };
 
@@ -137,26 +189,111 @@ const Login = () => {
                     </div>
 
                     {isBothOff ? (
-                        <div className="portal-closed-box">
-                            <div className="portal-closed-icon">🔒</div>
-                            <h2 className="portal-closed-title">Portal Temporarily Closed</h2>
-                            <p className="portal-closed-desc">
-                                Both Registration and Login are currently disabled by administration.
-                            </p>
-                        </div>
-                    ) : isLoginOnlyOff ? (
-                        <>
-                            <div className="portal-closed-box">
-                                <div className="portal-closed-icon">🔒</div>
-                                <h2 className="portal-closed-title">Student Login Closed</h2>
-                                <p className="portal-closed-desc">
-                                    Student login is currently disabled by administration.
+                        <div className="guest-entry-box">
+                            <div style={{ textAlign: 'center', marginBottom: '18px' }}>
+                                <div style={{ fontSize: '42px', marginBottom: '6px' }}>📝</div>
+                                <h1 style={{ fontSize: '22px', margin: '0 0 6px 0', color: '#ffb703' }}>
+                                    Direct Exam Entry
+                                </h1>
+                                <p style={{ margin: 0, color: '#94a3b8', fontSize: '13px' }}>
+                                    Login & Register are closed. Enter your Name to write the exam directly!
+                                </p>
+                                <p style={{ margin: '4px 0 0 0', color: '#38bdf8', fontSize: '13px', fontWeight: '600' }}>
+                                    (பெயரை உள்ளிட்டு உடனடியாக தேர்வு எழுதலாம்)
                                 </p>
                             </div>
-                            <p className="auth-footer">
+
+                            {guestError && <div className="message error">{guestError}</div>}
+
+                            <form onSubmit={handleGuestSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="guestName" style={{ fontWeight: '600', color: '#cbd5e1' }}>
+                                        Participant Name / உங்கள் பெயர்
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="guestName"
+                                        value={guestName}
+                                        onChange={(e) => setGuestName(e.target.value)}
+                                        placeholder="Enter your name (எ.கா: முகிலன்)"
+                                        autoComplete="name"
+                                        autoFocus
+                                        required
+                                    />
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="btn-primary"
+                                    disabled={guestLoading}
+                                    style={{
+                                        background: 'linear-gradient(135deg, #10b981, #059669)',
+                                        color: '#fff',
+                                        fontWeight: '700',
+                                        fontSize: '16px',
+                                        padding: '12px',
+                                        marginTop: '10px'
+                                    }}
+                                >
+                                    {guestLoading ? 'Connecting...' : '🚀 Start Exam / தேர்வை எழுது'}
+                                </button>
+                            </form>
+                        </div>
+                    ) : isLoginOnlyOff ? (
+                        <div className="guest-entry-box">
+                            <div style={{ textAlign: 'center', marginBottom: '18px' }}>
+                                <div style={{ fontSize: '42px', marginBottom: '6px' }}>📝</div>
+                                <h1 style={{ fontSize: '22px', margin: '0 0 6px 0', color: '#ffb703' }}>
+                                    Direct Exam Entry
+                                </h1>
+                                <p style={{ margin: 0, color: '#94a3b8', fontSize: '13px' }}>
+                                    Student login is closed. Enter your Name to write the exam directly!
+                                </p>
+                                <p style={{ margin: '4px 0 0 0', color: '#38bdf8', fontSize: '13px', fontWeight: '600' }}>
+                                    (பெயரை உள்ளிட்டு நேரடியாக தேர்வு எழுதலாம்)
+                                </p>
+                            </div>
+
+                            {guestError && <div className="message error">{guestError}</div>}
+
+                            <form onSubmit={handleGuestSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="guestName" style={{ fontWeight: '600', color: '#cbd5e1' }}>
+                                        Participant Name / உங்கள் பெயர்
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="guestName"
+                                        value={guestName}
+                                        onChange={(e) => setGuestName(e.target.value)}
+                                        placeholder="Enter your name (எ.கா: முகிலன்)"
+                                        autoComplete="name"
+                                        autoFocus
+                                        required
+                                    />
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="btn-primary"
+                                    disabled={guestLoading}
+                                    style={{
+                                        background: 'linear-gradient(135deg, #10b981, #059669)',
+                                        color: '#fff',
+                                        fontWeight: '700',
+                                        fontSize: '16px',
+                                        padding: '12px',
+                                        marginTop: '10px'
+                                    }}
+                                >
+                                    {guestLoading ? 'Connecting...' : '🚀 Start Exam / தேர்வை எழுது'}
+                                </button>
+                            </form>
+
+                            <p className="auth-footer" style={{ marginTop: '16px' }}>
                                 New participant? <Link to="/register">Register here</Link>
                             </p>
-                        </>
+                        </div>
                     ) : (
                         <>
                             <h1>Login</h1>

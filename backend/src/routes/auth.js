@@ -137,6 +137,47 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Direct Guest Entry (When Login & Register are OFF, students can just enter Name to write exam)
+router.post('/guest-entry', async (req, res) => {
+    try {
+        const { fullName } = req.body;
+        const name = String(fullName || '').trim() || 'Student Participant';
+        const guestEmail = `guest_${Date.now()}_${Math.floor(Math.random() * 10000)}@thendral.quiz`;
+        const tempPassword = await bcrypt.hash('guest123', 8);
+
+        let guestUser;
+        try {
+            const result = await query(
+                'INSERT INTO users (full_name, email, password, is_admin) VALUES ($1, $2, $3, FALSE) RETURNING id, full_name, email',
+                [name, guestEmail, tempPassword]
+            );
+            guestUser = result.rows[0];
+        } catch (dbErr) {
+            console.error('Database guest entry insert error:', dbErr);
+            guestUser = { id: Date.now() % 1000000, full_name: name, email: guestEmail };
+        }
+
+        const token = jwt.sign(
+            { uid: guestUser.id, email: guestUser.email, isAdmin: false },
+            process.env.JWT_SECRET || 'fallback-secret-techquiz',
+            { expiresIn: '24h' }
+        );
+
+        res.json({
+            token,
+            user: {
+                id: guestUser.id,
+                fullName: guestUser.full_name,
+                email: guestUser.email,
+                isAdmin: false
+            }
+        });
+    } catch (error) {
+        console.error('Guest entry error:', error);
+        res.status(500).json({ error: 'Failed to create guest session' });
+    }
+});
+
 // Check attempt status
 router.get('/check-attempt', verifyToken, async (req, res) => {
     try {

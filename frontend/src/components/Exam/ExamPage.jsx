@@ -4,6 +4,7 @@ import Timer from './Timer';
 import QuestionCard from './QuestionCard';
 import './ExamPage.css';
 import API_BASE_URL from '../../config';
+import defaultQuestions from '../../data/questions';
 
 const ExamPage = () => {
     const navigate = useNavigate();
@@ -39,16 +40,23 @@ const ExamPage = () => {
                     return;
                 }
 
-                const response = await fetch(`${API_BASE_URL}/api/exam/questions`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
+                let fetchedQuestions = [];
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/exam/questions`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch questions');
+                    if (response.ok) {
+                        const data = await response.json();
+                        fetchedQuestions = data.questions || [];
+                    }
+                } catch (fetchErr) {
+                    console.warn('Network error loading questions:', fetchErr);
                 }
 
-                const data = await response.json();
-                const fetchedQuestions = data.questions || [];
+                if (!fetchedQuestions || fetchedQuestions.length === 0) {
+                    fetchedQuestions = defaultQuestions;
+                }
                 
                 // Shuffle options for each question separately
                 const randomizedQuestions = fetchedQuestions.map(q => {
@@ -254,24 +262,28 @@ const ExamPage = () => {
             const totalScore = correctCount;
 
             // Save results to backend
-            const response = await fetch(`${API_BASE_URL}/api/result/submit`, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    totalScore,
-                    correctCount,
-                    wrongCount,
-                    sectionScores,
-                    timeTaken,
-                    answerDetails
-                })
-            });
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/result/submit`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        totalScore,
+                        correctCount,
+                        wrongCount,
+                        sectionScores,
+                        timeTaken,
+                        answerDetails
+                    })
+                });
 
-            if (!response.ok) {
-                throw new Error('Failed to submit exam');
+                if (!response.ok) {
+                    console.warn('Backend result submit note:', response.status);
+                }
+            } catch (subErr) {
+                console.warn('Backend submit network note:', subErr);
             }
 
             // Check if admin has enabled leaderboard
